@@ -20,7 +20,7 @@ class Ingrediente extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT id, name FROM users');
+        $stmt = $db->query('SELECT * FROM ingrediente');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

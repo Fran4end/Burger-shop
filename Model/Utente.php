@@ -20,7 +20,14 @@ class Utente extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT id, name FROM users');
+        $stmt = $db->query('SELECT * FROM utente');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /*public static function checkPassword($name, $password, $mail){
+        $db = static::getDB();
+        $stmt = $db->query('SELECT COUNT(id) FROM utente WHERE password=$password AND nome=$name');
+        $exist = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        return ($exist==1);
+    }*/
 }

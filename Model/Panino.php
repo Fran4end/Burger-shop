@@ -20,7 +20,7 @@ class Panino extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT id, name FROM users');
+        $stmt = $db->query('SELECT * FROM panino');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
