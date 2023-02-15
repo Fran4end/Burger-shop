@@ -1,7 +1,7 @@
 # To-Do List
 ## Model
 - Database
-- Query
+- Prepare datas for controllers
 ## Controller
 - 
 ## View
