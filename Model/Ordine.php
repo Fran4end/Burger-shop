@@ -9,8 +9,7 @@ use PDO;
  *
  * PHP version 7.0
  */
-class Ordine extends \Core\Model
-{   
+class Ordine extends \Core\Model {   
 
     private $id;
     private $consegnato;
@@ -37,6 +36,7 @@ class Ordine extends \Core\Model
         $parms = [$id_utente, false, false, $this->prezzo];
         $stmt->execute($parms);
         return $this;
+        //devono essere inseriti poi i panini tramite classe Panino
     }
 
     public function deleteOrder(){
