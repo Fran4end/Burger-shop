@@ -23,4 +23,5 @@ class Ingrediente extends \Core\Model
         $stmt = $db->query('SELECT * FROM ingrediente');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }
