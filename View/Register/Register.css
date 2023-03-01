@@ -1,0 +1,66 @@
+
+  /* * {
+    box-sizing: border-box;
+  } */
+  body , html{
+    margin: 0px;
+    border: none;
+  }
+
+  body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    /* The image used */
+    background-image: url('Register.jpg');
+  
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* Position text in the middle of the page/image */
+  .bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    padding-inline: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 20px;
+  }
+
+  body section{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h3{
+    text-align: center;
+    color: #ffc21c;
+    color: black;
+    font-size: 20px;
+    padding: 5%;
+  }
+
+  div.bg-text div{
+    background-color: #ffc21c;
+    margin-inline: 10%; 
+    border-radius: 10px;
+    margin-bottom: 10%;
+  }
+
+  input{
+    border-radius: 10px;
+    margin-bottom: 10%;
+  }
+
+  label{
+    margin-left: 5px;
+  }
+  
