@@ -5,11 +5,10 @@ namespace App\Models;
 use PDO;
 
 /**
- * Example user model
- *
- * PHP version 7.0
+ * All methods working
  */
-class Ordine extends \Core\Model {   
+class Ordine extends \Core\Model
+{   
 
     private $id;
     private $consegnato;
@@ -32,15 +31,17 @@ class Ordine extends \Core\Model {
     }
 
     public function createOrder($id_utente) {
-        $stmt = $this->db->prepare("INSERT INTO ordine('id_utente','pagato','consegnato','prezzo') VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO `ordine`
+        (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
+        [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $parms = [$id_utente, false, false, $this->prezzo];
         $stmt->execute($parms);
         return $this;
     }
 
-    public function deleteOrder(){
-        $stmt = $this->db->prepare("DELETE FROM ordine WHERE 'id'=?");
-        $parms = [$this->id];
+    public function deleteOrder($id){
+        $stmt = $this->db->prepare("DELETE FROM `ordine` WHERE `id` = ?");
+        $parms = [$id];
         return $stmt->execute($parms);
     }
 
@@ -57,14 +58,14 @@ class Ordine extends \Core\Model {
         return $this->prezzo;
     }
 
-    public function setConsegnato() {
-        $stmt = $this->db->prepare("UPDATE ordine SET 'consegnato'=?");
-        $parms = [true];
+    public function setConsegnato($id) {
+        $stmt = $this->db->prepare("UPDATE `ordine` SET `consegnato`= ? WHERE `id` = ?");
+        $parms = [true, $id];
         $stmt->execute($parms);
     }
-    public function setPagato() {
-        $stmt = $this->db->prepare("UPDATE ordine SET 'pagato'=?");
-        $parms = [true];
+    public function setPagato($id) {
+        $stmt = $this->db->prepare("UPDATE `ordine` SET `pagato`=? WHERE `id` = ?");
+        $parms = [true, $id];
         $stmt->execute($parms);
     }
     public function setPrezzo($prezzo) {
