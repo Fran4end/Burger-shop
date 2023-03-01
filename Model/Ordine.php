@@ -36,7 +36,6 @@ class Ordine extends \Core\Model {
         $parms = [$id_utente, false, false, $this->prezzo];
         $stmt->execute($parms);
         return $this;
-        //devono essere inseriti poi i panini tramite classe Panino
     }
 
     public function deleteOrder(){

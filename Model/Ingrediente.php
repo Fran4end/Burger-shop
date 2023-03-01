@@ -24,4 +24,8 @@ class Ingrediente extends \Core\Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function getIngredienteById($id)
+    {
+        return 0;
+    }
 }
