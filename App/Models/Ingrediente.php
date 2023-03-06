@@ -45,4 +45,44 @@ class Ingrediente extends \Core\Model
         $this->immagine = $res['immagine']; 
         return $this;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($newId)
+    {
+        $this->id = $newId;
+    }
+
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function setNome($newNome)
+    {
+        $this->nome = $newNome;
+    }
+    
+    public function getPrezzo()
+    {
+        return $this->prezzo;
+    }
+
+    public function setPrezzo($newPrezzo)
+    {
+        $this->prezzo = $newPrezzo;
+    }
+
+    public function getImmagine()
+    {
+        return $this->immagine;
+    }
+
+    public function setImmagine($newImmagine)
+    {
+        $this->immagine = $newImmagine;
+    }
 }
