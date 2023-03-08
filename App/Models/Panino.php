@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use FFI\Exception;
 use PDO;
 
 /**
@@ -45,7 +46,7 @@ class Panino extends \Core\Model
         $stmt = $this->db->prepare("INSERT INTO `panino` ('id_ordine','nome','pronto','prezzo') VALUES (?, ?, ?, ?)");
         $parms = [$id_ordine, $this->nome, false, $this->prezzo];
         $stmt->execute($parms);
-        $this->id = $this->lastInsertId();
+        $this->id = $this->db->lastInsertId();
         return $this;
     }
 
