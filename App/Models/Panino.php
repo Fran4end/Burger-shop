@@ -21,6 +21,10 @@ class Panino extends \Core\Model
 
     public function __construct(){
         $this->db = static::getDB();
+        $this->pronto = false;
+        $this->prezzo = 0;
+        $this->id = -1;
+        $this->nome = 'panino';
     }
 
     /**
@@ -34,10 +38,14 @@ class Panino extends \Core\Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createBurger($id_ordine, $nome = 'panino') {
+    public function createBurger($id_ordine) {
+        if ($this->prezzo == 0) {
+            return throw new Exception("The burger is not inizializated");
+        }
         $stmt = $this->db->prepare("INSERT INTO `panino` ('id_ordine','nome','pronto','prezzo') VALUES (?, ?, ?, ?)");
-        $parms = [$id_ordine, $nome, false, $this->prezzo];
+        $parms = [$id_ordine, $this->nome, false, $this->prezzo];
         $stmt->execute($parms);
+        $this->id = $this->lastInsertId();
         return $this;
     }
 
