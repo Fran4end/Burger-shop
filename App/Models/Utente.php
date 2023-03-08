@@ -20,6 +20,12 @@ class Utente extends \Core\Model
 
     public function __construct(){
         $this->db = static::getDB();
+        $this->nome = null;
+        $this->password = null;
+        $this->salt = 1;
+        $this->avatar = 'https://e7.pngegg.com/pngimages/246/554/png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
+
+
     }
     /**
      * Get all the users as an associative array
@@ -32,16 +38,36 @@ class Utente extends \Core\Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createUtente($nome, $password) {
-        $stmt = $this->db->prepare("INSERT INTO `panino` ('nome','password') VALUES (?, ?)");
-        $parms = [$nome, $password];
+    public function createUtente() {
+        if(is_null($this->utente)||is_null($this->password)){
+            return throw new Exception("The user is not inizializated");
+        }
+        $stmt = $this->db->prepare("INSERT INTO `utente` ('nome','password','salt','avatar') VALUES (?, ?, ?, ?)");
+        $parms = [$this->nome, $this->password, $this->salt, $this->avatar];
         $stmt->execute($parms);
-        $this->id = $this->lastInsertId();
+        $this->id = $this->db->lastInsertId();
         return $this;
     }
 
-    public function setAvatar($id) {
-        
+    public function setAvatar($id,$avatar) {
+        $this->avatar = $nome;
+    }
+
+    public function setNome($nome) {
+        $this->nome = $nome;
+    }
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+    public function getAvatar($id,$avatar) {
+        return $this->avatar;
+    }
+
+    public function getNome($nome) {
+        return $this->nome;
+    }
+    public function getPassword($password) {
+        return $this->password;
     }
 
 
