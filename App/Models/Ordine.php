@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use FFI\Exception;
 use PDO;
 
 /**
@@ -18,6 +19,10 @@ class Ordine extends \Core\Model
 
     public function __construct(){
         $this->db = static::getDB();
+        $this->pagato = false;
+        $this->prezzo = 0;
+        $this->id = -1;
+        $this->consegnato = false;
     }
 
     /**
@@ -31,11 +36,15 @@ class Ordine extends \Core\Model
     }
 
     public function createOrder($id_utente) {
+        if ($this->prezzo == 0) {
+            return throw new Exception("The order is not initialized");
+        }
         $stmt = $this->db->prepare("INSERT INTO `ordine`
         (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
         [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $parms = [$id_utente, false, false, $this->prezzo];
         $stmt->execute($parms);
+        $this->id = $this->db->lastInsertId();
         return $this;
     }
 
