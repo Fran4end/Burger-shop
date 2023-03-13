@@ -73,6 +73,21 @@ class Panino
         return $stmt->execute($parms);
     }
 
+    public function getPaninoById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `panino` WHERE `id` = ?');
+        $parms = [$id];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo $res;
+        $this->id = $res['id'];
+        $this->nome = $res['nome']; 
+        $this->pronto = $res['pronto']; 
+        $this->prezzo = $res['prezzo'];
+        $this->ingredienti = $res['ingredienti']; 
+        return $this;
+    }
+
     public function getId() {
         return $this->id;
     }

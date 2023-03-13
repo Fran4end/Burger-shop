@@ -25,11 +25,6 @@ class Utente
 
 
     }
-    /**
-     * Get all the users as an associative array
-     *
-     * @return array
-     */
     public function getAll()
     {
         $stmt = $this->db->query('SELECT * FROM `utente`');
@@ -37,6 +32,7 @@ class Utente
     }
 
     public function createUtente() {
+        print_r($this);
         $stmt = $this->db->prepare("INSERT INTO `utente` ('nome','password','salt','avatar') VALUES (?, ?, ?, ?)");
         $parms = [$this->nome, $this->password, $this->salt, $this->avatar];
         $stmt->execute($parms);
