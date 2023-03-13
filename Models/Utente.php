@@ -40,6 +40,27 @@ class Utente
         return $this;
     }
 
+    public function getUtenteById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `id` = ?');
+        $parms = [$id];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo $res;
+        $this->id = $res['id'];
+        $this->nome = $res['nome']; 
+        $this->password = $res['password']; 
+        $this->salt = $res['salt'];
+        $this->avatar = $res['avatar']; 
+        return $this;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+    public function getPassword() {
+        return $this->password;
+    }
     public function setAvatar($avatar) {
         $this->avatar = $avatar;
     }
@@ -49,12 +70,5 @@ class Utente
     }
     public function setPassword($password) {
         $this->password = $password;
-    }
-
-    public function getNome() {
-        return $this->nome;
-    }
-    public function getPassword() {
-        return $this->password;
     }
 }
