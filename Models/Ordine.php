@@ -51,6 +51,20 @@ class Ordine
         return $stmt->execute($parms);
     }
 
+    public function getOrdineById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `ordine` WHERE `id` = ?');
+        $parms = [$id];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo $res;
+        $this->id = $res['id'];
+        $this->consegnato = $res['consegnato']; 
+        $this->pagato = $res['pagato']; 
+        $this->prezzo = $res['prezzo']; 
+        return $this;
+    }
+
     public function getId() {
         return $this->id;
     }
