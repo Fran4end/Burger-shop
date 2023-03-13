@@ -61,4 +61,18 @@ class Utente
     public function getPassword() {
         return $this->password;
     }
+    public function getAvatar() {
+        return $this->avatar;
+    }
+
+    //RETURNS JSON
+    public function toJson(){
+        return json_encode(
+                        array("User_ID" => $this->id,
+                              "Username" => $this->getNome,
+                              "Password" => $this->getPassword,
+                              "Avatar" => $this->getAvatar,
+                              "Salt" => $this->salt)
+                        );
+    }
 }
