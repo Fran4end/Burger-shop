@@ -25,11 +25,6 @@ class Utente
 
 
     }
-    /**
-     * Get all the users as an associative array
-     *
-     * @return array
-     */
     public function getAll()
     {
         $stmt = $this->db->query('SELECT * FROM `utente`');
