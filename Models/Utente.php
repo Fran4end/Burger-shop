@@ -62,7 +62,7 @@ class Utente
     }
 
     //RETURNS JSON
-    public function toJson(){
+    public function toJSON(){
         return json_encode(
                         array("User_ID" => $this->id,
                               "Username" => $this->getNome,

@@ -93,7 +93,7 @@ class Ordine
     }
 
     //RETURNS JSON
-    public function toJson(){
+    public function toJSON(){
         return json_encode(
                         array("Order_ID" => $this->getId, 
                           "Price" => $this->getPrezzo, 

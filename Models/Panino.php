@@ -126,7 +126,7 @@ class Panino
     }
 
     //RETURNS JSON
-    public function toJson(){
+    public function toJSON(){
         return json_encode(
                         array("Burger_ID" => $this->getId,
                               "Burger_Name" => $this->getNome,

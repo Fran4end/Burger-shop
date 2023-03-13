@@ -84,7 +84,7 @@ class Ingrediente
     }
 
     //RETURNS JSON
-    public function toJson(){
+    public function toJSON(){
         return json_encode(
                         array("Ingredient_ID" => $this->getId, 
                             "Ingredient_Name" => $this->getNome, 
