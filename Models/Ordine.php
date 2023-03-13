@@ -91,4 +91,14 @@ class Ordine
     public function setPrezzo($prezzo) {
         $this->prezzo = $prezzo;
     }
+
+    //RETURNS JSON
+    public function toJSON(){
+        return json_encode(
+                        array("Order_ID" => $this->getId, 
+                          "Price" => $this->getPrezzo, 
+                          "Payed" => $this->getPagato, 
+                          "Delivered" => $this->getConsegnato)
+                        );
+    }
 }

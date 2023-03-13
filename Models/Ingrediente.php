@@ -82,4 +82,14 @@ class Ingrediente
     {
         $this->immagine = $newImmagine;
     }
+
+    //RETURNS JSON
+    public function toJSON(){
+        return json_encode(
+                        array("Ingredient_ID" => $this->getId, 
+                            "Ingredient_Name" => $this->getNome, 
+                            "Image" => $this->getImmagine, 
+                            "Price" => $this->getPrezzo)
+                        );
+    }
 }

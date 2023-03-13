@@ -104,6 +104,11 @@ class Panino
         return $this->ingredienti;
     }
 
+    public function getPronto()
+    {
+        return $this->pronto;
+    }
+
     public function setIngredienti($ingredienti = [])
     {
         $this->ingredienti = $ingredienti;
@@ -118,5 +123,16 @@ class Panino
     }
     public function setPrezzo($prezzo) {
         $this->prezzo = $prezzo;
+    }
+
+    //RETURNS JSON
+    public function toJSON(){
+        return json_encode(
+                        array("Burger_ID" => $this->getId,
+                              "Burger_Name" => $this->getNome,
+                              "Burger_Price" => $this->getPrezzo,
+                              "Ingredients" => $this->getIngredienti,
+                              "Ready" => $this->getPronto)
+                        );
     }
 }
