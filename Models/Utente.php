@@ -1,8 +1,4 @@
 <?php
-
-namespace App\Models;
-
-use FFI\Exception;
 use PDO;
 
 /**
@@ -10,7 +6,7 @@ use PDO;
  *
  * PHP version 7.0
  */
-class Utente extends \Core\Model
+class Utente
 {
     private $id;
     private $nome;
@@ -20,12 +16,12 @@ class Utente extends \Core\Model
     private $db;
 
     public function __construct($nome, $password){
-        $this->db = static::getDB();
+        $this->db = QueryDB::getDB();
         $this->nome = $nome;
         $this->password = $password;
         $this->salt = 1;
-        $this->avatar = 
-        'https://e7.pngegg.com/pngimages/246/554/png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
+        $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
+        /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
 
 
     }

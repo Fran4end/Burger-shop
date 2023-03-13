@@ -1,15 +1,11 @@
 <?php
-
-namespace App\Models;
-
-use PDO;
-
+include 'QueryDB.php';
 /**
  * Example user model
  *
  * PHP version 7.0
  */
-class Ingrediente extends \Core\Model
+class Ingrediente
 {
 
     /**
@@ -24,11 +20,11 @@ class Ingrediente extends \Core\Model
     private $db;
 
     public function __construct(){
-        $this->db = static::getDB();
+        $this->db = QueryDB::getDB();
     }
     public static function getAll()
     {
-        $db = static::getDB();
+        $db = QueryDB::getDB();
         $stmt = $db->query('SELECT * FROM ingrediente');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -39,6 +35,7 @@ class Ingrediente extends \Core\Model
         $parms = [$id];
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo $res;
         $this->id = $res['id'];
         $this->nome = $res['nome']; 
         $this->prezzo = $res['prezzo']; 

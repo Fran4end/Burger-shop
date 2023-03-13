@@ -1,8 +1,4 @@
 <?php
-
-namespace App\Models;
-
-use FFI\Exception;
 use PDO;
 
 /**
@@ -10,7 +6,7 @@ use PDO;
  *
  * PHP version 7.0
  */
-class Panino extends \Core\Model
+class Panino
 {
 
     private $id;
@@ -21,7 +17,7 @@ class Panino extends \Core\Model
     private $db;
 
     public function __construct(){
-        $this->db = static::getDB();
+        $this->db = QueryDB::getDB();
         $this->pronto = false;
         $this->prezzo = 0;
         $this->id = -1;

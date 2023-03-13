@@ -1,14 +1,11 @@
 <?php
-
-namespace App\Models;
-
 use FFI\Exception;
 use PDO;
 
 /**
  * All methods working
  */
-class Ordine extends \Core\Model
+class Ordine
 {   
 
     private $id;
@@ -18,7 +15,7 @@ class Ordine extends \Core\Model
     private $db;
 
     public function __construct(){
-        $this->db = static::getDB();
+        $this->db = QueryDB::getDB();
         $this->pagato = false;
         $this->prezzo = 0;
         $this->id = -1;
