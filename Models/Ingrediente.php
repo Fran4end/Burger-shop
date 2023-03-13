@@ -35,7 +35,7 @@ class Ingrediente
         $parms = [$id];
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo $res;
+        $res = $res[0];
         $this->id = $res['id'];
         $this->nome = $res['nome']; 
         $this->prezzo = $res['prezzo']; 
