@@ -22,11 +22,6 @@ class Ordine
         $this->consegnato = false;
     }
 
-    /**
-     * Get all the users as an associative array
-     *
-     * @return array
-     */
     public function getAll() {
         $stmt = $this->db->query('SELECT * FROM ordine');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -95,10 +90,10 @@ class Ordine
     //RETURNS JSON
     public function toJSON(){
         return json_encode(
-                        array("Order_ID" => $this->getId, 
-                          "Price" => $this->getPrezzo, 
-                          "Payed" => $this->getPagato, 
-                          "Delivered" => $this->getConsegnato)
+                        array("Order_ID" => $this->getId(), 
+                        "Price" => $this->getPrezzo(), 
+                        "Payed" => $this->getPagato(), 
+                        "Delivered" => $this->getConsegnato())
                         );
     }
 }

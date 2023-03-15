@@ -78,11 +78,12 @@ class Utente
     //RETURNS JSON
     public function toJSON(){
         return json_encode(
-                        array("User_ID" => $this->id,
-                              "Username" => $this->getNome,
-                              "Password" => $this->getPassword,
-                              "Avatar" => $this->getAvatar,
-                              "Salt" => $this->salt)
+                        array(
+                            "User_ID" => $this->id,
+                            "Username" => $this->getNome(),
+                            "Password" => $this->getPassword(),
+                            "Avatar" => $this->getAvatar(),
+                            "Salt" => $this->salt)
                         );
     }
 }
