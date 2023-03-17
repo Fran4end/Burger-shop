@@ -63,4 +63,31 @@
   label{
     margin-left: 5px;
   }
+
+  input[type=submit]{
+    text-align: center;
+    background-color: #ffc21c;
+    border: none;
+    font-weight: bold;
+    padding-inline: 10%;
+  }
   
+  a{
+    color: gainsboro;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  a:active {
+    text-decoration: none;
+  }
