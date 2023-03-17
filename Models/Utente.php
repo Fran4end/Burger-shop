@@ -1,5 +1,6 @@
 <?php
-use PDO;
+
+require_once 'QueryDB.php';
 
 /**
  * Example user model
@@ -33,10 +34,25 @@ class Utente
 
     public function createUtente() {
         print_r($this);
-        $stmt = $this->db->prepare("INSERT INTO `utente` ('nome','password','salt','avatar') VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`salt`,`avatar`) VALUES (?, ?, ?, ?)");
         $parms = [$this->nome, $this->password, $this->salt, $this->avatar];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
+        return $this;
+    }
+
+    public function getUtenteByName($name)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `nome` = ? LIMIT 1');
+        $parms = [$name];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($res);
+        $this->id = $res[0]['id'];
+        $this->nome = $res[0]['nome']; 
+        $this->password = $res[0]['password']; 
+        $this->salt = $res[0]['salt'];
+        $this->avatar = $res[0]['avatar']; 
         return $this;
     }
 
