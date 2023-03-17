@@ -1,6 +1,6 @@
 <?php
 
-use PDO;
+// use PDO;
 include 'Config.php';
 
 /**
