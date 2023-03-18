@@ -29,7 +29,7 @@ class Ordine
 
     public function createOrder($id_utente) {
         if ($this->prezzo == 0) {
-            return throw new Exception("The order is not initialized");
+            throw new Exception("The order is not initialized");
         }
         $stmt = $this->db->prepare("INSERT INTO `ordine`
         (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
