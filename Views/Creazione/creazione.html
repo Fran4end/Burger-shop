@@ -6,196 +6,225 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="creazione.css">
+  <script src="creazione.js"></script>
   <title>Creazione</title>
 </head>
 
 <body>
   <div id="banner">THIASBURGER</div>
   <div id="frase">Componi il tuo panino!</div>
-  <form>
 
     <div id="prodotto">PANE</div>
     <div>
       <div class="container">
-        <div class="singlebutton"><button class="ingrediente" onclick="getRoba('Classico bun')"><img src="Image/paninohamburgernorm.png" width="200" height="180"><br>Classico 2.00$</button>
+        <div class="singlebutton"><button class="ingrediente"><img src="Image/paninohamburgernorm.png" width="200" height="180"><br>Classico 2.00€</button>
           <div class="piumeno">
-          <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          <button class="piu" onclick="getRoba('Pane classico', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Pane classico', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
         </div>
-        <div class="singlebutton"><button class="ingrediente" type="submit"><img src="Image/paneintegrale.jpg"width="200" height="180"><br>Integrale 2.50$</button>
+        <div class="singlebutton"><button class="ingrediente" onclick="getRoba('Pane integrale')"><img src="Image/paneintegrale.jpg"width="200" height="180"><br>Integrale 2.50€</button>
           <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            <button class="piu" onclick="getRoba('Pane integrale', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Pane integrale', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
         </div>
-        <div class="singlebutton"><button class="ingrediente" type="submit"><img src="Image/panehotdog.jpg" width="200" height="180"><br>HotDog 2.00$</button>
+        <div class="singlebutton"><button class="ingrediente"><img src="Image/panehotdog.jpg" width="200" height="180"><br>HotDog 2.00€</button>
           <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            <button class="piu" onclick="getRoba('Pane HotDog', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Pane HotDog', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
         </div>
-        <div class="singlebutton"><button class="ingrediente" type="submit"><img src="Image/panetostato.jpg" width="200" height="180"><br>Toast 2.00$</button>
+        <div class="singlebutton"><button class="ingrediente"><img src="Image/panetostato.jpg" width="200" height="180"><br>Toast 2.00€</button>
           <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            <button class="piu" onclick="getRoba('Pane tostato', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Pane tostato', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
         </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
+        <div class="singlebutton"> <button class="ingrediente"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00€</button>
           <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            <button class="piu" onclick="getRoba('Pane piadina', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Pane piadina', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
         </div>
       </div>
       <div id="prodotto">CARNE</div>
       <div>
         <div class="container">
-          <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/hamburger.jpg" width="200" height="180"><br>Hamburger 2.00€</button>
             <div class="piumeno">
-              <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-            <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              <button class="piu" onclick="getRoba('Carne hamburger', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Carne hamburger', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
           </div>
-          </div>
-          <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-            <div class="piumeno">
-              <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-            <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-          </div>
-          </div>
-          <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-            <div class="piumeno">
-              <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-            <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-          </div>
-          </div>
-          <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-            <div class="piumeno">
-              <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-            <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-          </div>
-          </div>
-          <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-            <div class="piumeno">
-              <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-            <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-          </div>
-          </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
+        <div class="singlebutton"> <button class="ingrediente"><img src="Image/divieto.png" width="200" height="180"><br>Niente</button>
           <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            <button class="piu" onclick="getRoba('Carne hamburger', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+          <button class="meno" onclick="getRoba('Carne hamburger', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
         </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/pulledpork.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        <div class="singlebutton"> <button class="ingrediente" type="submit"><img src="Image/piadina.webp" width="200" height="180"><br>Piadina 2.00$</button>
-          <div class="piumeno">
-            <button class="piu" type="submit"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
-          <button class="meno" type="submit"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
-        </div>
-        </div>
-        
-        <button class="ingrediente" type="submit"><img src="Image/divieto.png" width="200"
-            height="180"><br>Niente</button>
-        <div id="prodotto">FORMAGGIO</div>
-        <div>
-          <button class="singlebutton" type="submit"><img src="Image/mozzarella.jpg" width="200"
-              height="180"><br>Mozzarella 2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/cheddar.jpg" width="200" height="180"><br>Cheddar
-            2.50$</button>
-          <button class="singlebutton" type="submit"><img src="Image/fontina.jpg" width="200" height="180"><br>Fontina
-            2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/pecorino.jpg" width="200" height="180"><br>Pecorino
-            2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/gorgo.jpeg" width="200" height="180"><br>Gorgonzola
-            2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/squacquerone.jpg" width="200"
-              height="180"><br>Sqacquerone 2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/scamorza.jpg" width="200" height="180"><br>Scamorza
-            2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/emmental.jpg" width="200" height="180"><br>Emmental
-            2.00$</button>
-          <button class="singlebutton" type="submit"><img src="Image/divieto.png" width="200"
-              height="180"><br>Niente</button>
-          <div id="prodotto">VERDURE</div>
-          <div>
-            <button class="singlebutton" type="submit"><img src="Image/pomodoro.jpg" width="200"
-                height="180"><br>Pomodoro a fette 2.50$</button>
-            <button class="singlebutton" type="submit"><img src="Image/insalata.jpg" width="200"
-                height="180"><br>Insalata 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/zucchine.jpg" width="200"
-                height="180"><br>Zucchine alla piastra 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/rucola.jpg" width="200" height="180"><br>Rucola
-              2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/melanzane.webp" width="200"
-                height="180"><br>Melanzane 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/cetriolo.jpg" width="200"
-                height="180"><br>Cetriolo 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/peperoni.jpg" width="200"
-                height="180"><br>Peperoni 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/patatine.jpg" width="200"
-                height="180"><br>Patatine fritte 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/anelli.jpg" width="200" height="180"><br>Anelli di
-              cipolla 2.00$</button>
-            <button class="singlebutton" type="submit"><img src="Image/divieto.png" width="200"
-                height="180"><br>Niente</button>
-            <div id="prodotto">SALSE</div>
-            <div><button class="singlebutton" type="submit"><img src="Image/maionese.jpg" width="200"
-                  height="180"><br>Maionese 2.50$</button>
-              <button class="singlebutton" type="submit"><img src="Image/ketchup.webp" width="200"
-                  height="180"><br>Ketchup 2.50$</button>
-              <button class="singlebutton" type="submit"><img src="Image/salsarosa.jpg" width="200"
-                  height="180"><br>Salsa Rosa 2.50$</button>
-              <button class="singlebutton" type="submit"><img src="Image/barbecue.jpg" width="200"
-                  height="180"><br>Barbecue 2.50$</button>
-              <button class="singlebutton" type="submit"><img src="Image/piccante.webp" width="200"
-                  height="180"><br>Salsa Piccante 2.50$</button>
-              <button class="singlebutton" type="submit"><img src="Image/divieto.png" width="200"
-                  height="180"><br>Niente</button>
+      </div>
 
+        
+
+        <div id="prodotto">FORMAGGIO</div>
+        <div class="container">
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/mozzarella.jpg" width="200" height="180"><br>Mozzarella 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio mozzarella', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio mozzarella', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/cheddar.jpg" width="200" height="180"><br>Cheddar 2.50€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio cheddar', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio cheddar', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/fontina.jpg" width="200" height="180"><br>Fontina 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio fontina', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio fontina', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/pecorino.jpg" width="200" height="180"><br>Pecorino 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio pecorino', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio pecorino', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/gorgo.jpeg" width="200" height="180"><br>Gorgonzola 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio gorgonzola', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio gorgonzolaFormaggio ', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/squacquerone.jpg" width="200" height="180"><br>Squacquerone 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio squacquerone', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio squacquerone', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/scamorza.jpg" width="200" height="180"><br>Scamorza 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio scamorza', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio scamorza', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/emmental.jpg" width="200" height="180"><br>Emmental 2.00€</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio emmental', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio emmental', -1)"><img src="https://icons-foFormaggio r-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div class="singlebutton"> <button class="ingrediente"><img src="Image/divieto.png" width="200" height="180"><br>Niente</button>
+            <div class="piumeno">
+              <button class="piu" onclick="getRoba('Formaggio null', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+            <button class="meno" onclick="getRoba('Formaggio null', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+          </div>
+
+          <div id="prodotto">VERDURE</div>
+          <div class="container">
+
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/pomodoro.jpg" width="200" height="180"><br>Pomodoro 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura pomodoro', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura pomodoro', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
             </div>
-  </form>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/insalata.jpg" width="200" height="180"><br>Insalata 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura insalata', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura insalata', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/zucchine.jpg" width="200" height="180"><br>Zucchine 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura zucchine', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura zucchine', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/rucola.jpg" width="200" height="180"><br>Rucola 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura rucola', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura rucola', -1)"><img src="https://icons-foFormaggio r-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/melanzane.webp" width="200" height="180"><br>Melanzane 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura melanzane', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura melanzane', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/cetriolo.jpg" width="200" height="180"><br>Cetriolo 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura cetriolo', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura  cetriolo', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/peperoni.jpg" width="200" height="180"><br>Peperoni 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura peperoni', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura peperoni', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/patatine.jpg" width="200" height="180"><br>Patatine fritte 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura patatine', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura patatine', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/anelli.jpg" width="200" height="180"><br>Anelli di cipolla 2.00€</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura anelli', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura anelli', -1)"><img src="https://icons-foFormaggio r-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+  
+            <div class="singlebutton"> <button class="ingrediente"><img src="Image/divieto.png" width="200" height="180"><br>Niente</button>
+              <div class="piumeno">
+                <button class="piu" onclick="getRoba('Verdura null', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+              <button class="meno" onclick="getRoba('Verdura null', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+            </div>
+
+            <div id="prodotto">SALSE</div>
+            <div>
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/maionese.jpg" width="200" height="180"><br>Maionese 2.00€</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa maionese', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa maionese', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+  
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/ketchup.webp" width="200" height="180"><br>Ketchup 2.00€</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa ketchup', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa ketchup', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+    
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/salsarosa.jpg" width="200" height="180"><br>Salsa Rosa 2.00€</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa rosa', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa rosa', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+    
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/barbecue.jpg" width="200" height="180"><br>Salsa Barbecue 2.00€</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa barbecue', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa barbecue', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+    
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/piccante.webp" width="200" height="180"><br>Salsa Piccante 2.00€</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa piccante', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa piccante', -1)"><img src="https://icons-foFormaggio r-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+    
+              <div class="singlebutton"> <button class="ingrediente"><img src="Image/divieto.png" width="200" height="180"><br>Niente</button>
+                <div class="piumeno">
+                  <button class="piu" onclick="getRoba('Salsa null', 1)"><img src="https://img.favpng.com/4/5/15/computer-icons-symbol-addition-plus-and-minus-signs-png-favpng-NB4npaRQPe9p0HHCsuQNV1YD2.jpg"width="50" height="50"></button>
+                <button class="meno" onclick="getRoba('Salsa null', -1)"><img src="https://icons-for-free.com/download-icon-math+minus+sign+stop+icon-1320184998453384308_512.png" width="50"height="50"></button>
+              </div>
+              
+            
+            </div>
   <div id="bottoni2"><button class="bottone" type="submit">ANNULLA</button> <button class="bottone"
       type="submit">AVANTI</button></div>
 
