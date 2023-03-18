@@ -15,7 +15,7 @@ if(isset($_REQUEST['name'])){
     if($_REQUEST['password'] == $user->getPassword()){ // verifica che la password corrisponda
         $_SESSION['auth'] = true;
         $_SESSION['user'] = $user->toJSON();
-        header('Location: ../Views/Mainpage.html');
+        header('Location: ../Views/Home/home.html');
     }else{
         $_SESSION['auth'] = false;
         header('Location: ../Views/Login/LoginPage.html');
