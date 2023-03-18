@@ -29,13 +29,28 @@ class Ordine
 
     public function createOrder($id_utente) {
         if ($this->prezzo == 0) {
-            return throw new Exception("The order is not initialized");
+            throw new Exception("The order is not initialized");
         }
+
         $stmt = $this->db->prepare("INSERT INTO `ordine`
         (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
         [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $parms = [$id_utente, false, false, $this->prezzo];
-        $stmt->execute($parms);
+
+/*        $stmt = $this->db->prepare('INSERT INTO `ordine`(`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES(:id, :pagato, :consegnato, :prezzo)');
+        $stmt->bindValue(':id' , $id_utente);
+        $stmt->bindValue(':pagato' , false);
+        $stmt->bindValue(':consegnato' , false);
+        $stmt->bindValue(':prezzo' , $this->prezzo);
+*/
+        try {
+            $stmt->execute($parms);
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo '<br>';
+            print_r($th);
+        }
+
         $this->id = $this->db->lastInsertId();
         return $this;
     }

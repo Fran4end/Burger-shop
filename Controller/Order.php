@@ -1,6 +1,14 @@
 <?php
 
+session_start();    
 
+if(isset($_REQUEST['json'])){
+        $json = json_decode($_REQUEST['json'], true);
+    
+    var_dump($json["hamburgers"][0]['name']);
+}
+
+// print_r($_REQUEST);
 
 
 /*
@@ -14,11 +22,6 @@
                 "name": "bun",
                 "amount": 2
              },
-            //  "beef patty",
-            //  "lettuce",
-            //  "tomato",
-            //  "sauce",
-            //  "cheese"
           ]
        },
        {
@@ -29,11 +32,6 @@
                 "name": "bun",
                 "amount": 2
              },
-            //  "beef patty",
-            //  "lettuce",
-            //  "tomato",
-            //  "sauce",
-            //  "cheese"
           ]
        },
     ]

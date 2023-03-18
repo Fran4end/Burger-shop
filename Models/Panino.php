@@ -37,7 +37,8 @@ class Panino
 
     public function createBurger($id_ordine) {
         if ($this->prezzo == 0) {
-            return throw new Exception("The burger is not initialized");
+            throw new Exception("The burger is not initialized");
+            return;
         }
         $stmt = $this->db->prepare("INSERT INTO `panino` ('id_ordine','nome','pronto','prezzo') VALUES (?, ?, ?, ?)");
         $parms = [$id_ordine, $this->nome, false, $this->prezzo];
