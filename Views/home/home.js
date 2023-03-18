@@ -1,4 +1,4 @@
 function createBurger(){
-    fetch('../../Controller/CreateBurger.php')
-    .then((res) => console.log(res));
+    console.log('a');
+    fetch('localhost/Controller/CreateBurger.php');
 }
