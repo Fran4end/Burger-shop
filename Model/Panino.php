@@ -1,15 +1,10 @@
 <?php
-
-namespace App\Models;
-
-use PDO;
+// use PDO;
 
 /**
- * Example user model
- *
- * PHP version 7.0
+ * TESTED 100%
  */
-class Panino extends \Core\Model
+class Panino
 {
 
     private $id;
@@ -20,7 +15,11 @@ class Panino extends \Core\Model
     private $db;
 
     public function __construct(){
-        $this->db = static::getDB();
+        $this->db = QueryDB::getDB();
+        $this->pronto = false;
+        $this->prezzo = 0;
+        $this->id = -1;
+        $this->nome = 'panino';
     }
 
     /**
@@ -34,21 +33,27 @@ class Panino extends \Core\Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createBurger($id_ordine, $nome = 'panino') {
-        $stmt = $this->db->prepare("INSERT INTO `panino` ('id_ordine','nome','pronto','prezzo') VALUES (?, ?, ?, ?)");
-        $parms = [$id_ordine, $nome, false, $this->prezzo];
+    public function createBurger($id_ordine) {
+        if ($this->prezzo == 0) {
+            throw new Exception("The burger is not initialized");
+            return;
+        }
+        $stmt = $this->db->prepare("INSERT INTO `panino` (`id_ordine`,`nome`,`pronto`,`prezzo`) VALUES (?, ?, ?, ?)");
+        $parms = [$id_ordine, $this->nome, false, $this->prezzo];
         $stmt->execute($parms);
+        $this->id = $this->db->lastInsertId();
         return $this;
     }
 
-    public function addIngrediente($id_ingrediente, $n = 1)
+    public function addIngrediente($id_ingrediente, $id_ordine, $n = 1)
     {
         for ($i=0; $i < $n; $i++) { 
-            $this->ingredienti[] = Ingrediente::getIngredienteById($id_ingrediente);
+            $this->ingredienti[] = (new Ingrediente())->getIngredienteById($id_ingrediente);
         }
-        $stmt = $this->db->prepare("INSERT INTO `preparazione` (`id_panino`,`id_ingrediente`, `quantità`) 
-        VALUES ('?', '?', '?')");
-        $parms = [$this->id, $id_ingrediente, $n];
+        
+        $stmt = $this->db->prepare("INSERT INTO `preparazione` (`id_panino`,`id_ingrediente`, `quantità`, `id_ordine`) 
+        VALUES (?, ?, ?, ?)");
+        $parms = [$this->id, $id_ingrediente, $n, $id_ordine];
         return $stmt->execute($parms);
     }
 
@@ -68,6 +73,21 @@ class Panino extends \Core\Model
         return $stmt->execute($parms);
     }
 
+    public function getPaninoById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `panino` WHERE `id` = ?');
+        $parms = [$id];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo $res;
+        $this->id = $res['id'];
+        $this->nome = $res['nome']; 
+        $this->pronto = $res['pronto']; 
+        $this->prezzo = $res['prezzo'];
+        $this->ingredienti = $res['ingredienti']; 
+        return $this;
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -84,6 +104,11 @@ class Panino extends \Core\Model
         return $this->ingredienti;
     }
 
+    public function getPronto()
+    {
+        return $this->pronto;
+    }
+
     public function setIngredienti($ingredienti = [])
     {
         $this->ingredienti = $ingredienti;
@@ -98,5 +123,17 @@ class Panino extends \Core\Model
     }
     public function setPrezzo($prezzo) {
         $this->prezzo = $prezzo;
+    }
+
+    //RETURNS JSON
+    public function toJSON(){
+        return json_encode(
+                        array(
+                            "Burger_ID" => $this->getId(),
+                            "Burger_Name" => $this->getNome(),
+                            "Burger_Price" => $this->getPrezzo(),
+                            "Ingredients" => $this->getIngredienti(),
+                            "Ready" => $this->getPronto())
+                        );
     }
 }
