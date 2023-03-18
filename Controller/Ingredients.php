@@ -1,5 +1,5 @@
 <?php
-include 'Models/Ingrediente.php';
+include '../Models/Ingrediente.php';
  $ingredient = new Ingrediente;
  ingredientsToJson($ingredient ->getAll());
 
