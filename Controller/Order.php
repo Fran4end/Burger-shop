@@ -4,7 +4,7 @@ include '../Models/Panino.php';
 include '../Models/Ingrediente.php';
 include '../Models/Ordine.php';
 
-session_start();    
+session_start();  
 
 if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
    // decodes the json
@@ -12,7 +12,7 @@ if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
 
    // gets the User form the db
    $user = new Utente('a', 'a');  //lazy initialization
-   $user_id =$_SESSION['user']['User_ID'];
+   $user_id = $_SESSION['user']['User_ID'];
    $user->getUtenteById($user_id);
 
    // creates the Ordine
