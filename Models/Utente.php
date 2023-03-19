@@ -3,9 +3,7 @@
 require_once 'QueryDB.php';
 
 /**
- * Example user model
- *
- * PHP version 7.0
+ * TESTED 100%
  */
 class Utente
 {

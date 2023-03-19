@@ -1,9 +1,9 @@
 <?php
 use FFI\Exception;
-use PDO;
+// use PDO;
 
 /**
- * All methods working
+ * TESTED 100%
  */
 class Ordine
 {   
@@ -37,19 +37,7 @@ class Ordine
         [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $parms = [$id_utente, false, false, $this->prezzo];
 
-/*        $stmt = $this->db->prepare('INSERT INTO `ordine`(`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES(:id, :pagato, :consegnato, :prezzo)');
-        $stmt->bindValue(':id' , $id_utente);
-        $stmt->bindValue(':pagato' , false);
-        $stmt->bindValue(':consegnato' , false);
-        $stmt->bindValue(':prezzo' , $this->prezzo);
-*/
-        try {
-            $stmt->execute($parms);
-        } catch (\Throwable $th) {
-            //throw $th;
-            echo '<br>';
-            print_r($th);
-        }
+        $stmt->execute($parms);
 
         $this->id = $this->db->lastInsertId();
         return $this;

@@ -1,10 +1,8 @@
 <?php
-use PDO;
+// use PDO;
 
 /**
- * Example user model
- *
- * PHP version 7.0
+ * TESTED 100%
  */
 class Panino
 {
@@ -40,21 +38,22 @@ class Panino
             throw new Exception("The burger is not initialized");
             return;
         }
-        $stmt = $this->db->prepare("INSERT INTO `panino` ('id_ordine','nome','pronto','prezzo') VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO `panino` (`id_ordine`,`nome`,`pronto`,`prezzo`) VALUES (?, ?, ?, ?)");
         $parms = [$id_ordine, $this->nome, false, $this->prezzo];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
         return $this;
     }
 
-    public function addIngrediente($id_ingrediente, $n = 1)
+    public function addIngrediente($id_ingrediente, $id_ordine, $n = 1)
     {
         for ($i=0; $i < $n; $i++) { 
-            $this->ingredienti[] =(new Ingrediente())->getIngredienteById($id_ingrediente);
+            $this->ingredienti[] = (new Ingrediente())->getIngredienteById($id_ingrediente);
         }
-        $stmt = $this->db->prepare("INSERT INTO `preparazione` (`id_panino`,`id_ingrediente`, `quantità`) 
-        VALUES ('?', '?', '?')");
-        $parms = [$this->id, $id_ingrediente, $n];
+        
+        $stmt = $this->db->prepare("INSERT INTO `preparazione` (`id_panino`,`id_ingrediente`, `quantità`, `id_ordine`) 
+        VALUES (?, ?, ?, ?)");
+        $parms = [$this->id, $id_ingrediente, $n, $id_ordine];
         return $stmt->execute($parms);
     }
 

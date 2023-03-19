@@ -5,11 +5,9 @@ session_start();
 if(isset($_REQUEST['json'])){
         $json = json_decode($_REQUEST['json'], true);
     
-    var_dump($json["hamburgers"][0]['name']);
+   //  var_dump($json["hamburgers"][0]['name']);
+
 }
-
-// print_r($_REQUEST);
-
 
 /*
 {

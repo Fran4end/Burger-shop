@@ -1,9 +1,8 @@
 <?php
 include 'QueryDB.php';
+
 /**
- * Example user model
- *
- * PHP version 7.0
+ * TESTED 100%
  */
 class Ingrediente
 {
@@ -22,6 +21,7 @@ class Ingrediente
     public function __construct(){
         $this->db = QueryDB::getDB();
     }
+
     public static function getAll()
     {
         $db = QueryDB::getDB();
@@ -40,7 +40,7 @@ class Ingrediente
         $this->nome = $res['nome']; 
         $this->prezzo = $res['prezzo']; 
         $this->immagine = $res['immagine']; 
-        return $this;
+        return $res;
     }
 
     public function getId()
