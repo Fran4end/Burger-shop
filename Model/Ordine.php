@@ -40,7 +40,7 @@ class Ordine
         $stmt->execute($parms);
 
         $this->id = $this->db->lastInsertId();
-        return $this;
+        return $this->id;
     }
 
     public function deleteOrder($id){

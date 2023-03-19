@@ -21,11 +21,8 @@ class Utente
         $this->salt = 1;
         $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
         /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
-
-
     }
-    public function getAll()
-    {
+    public function getAll(){
         $stmt = $this->db->query('SELECT * FROM `utente`');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -75,15 +72,22 @@ class Utente
     public function getPassword() {
         return $this->password;
     }
+    public function getSalt() {
+        return $this->salt;
+    } 
+
+
     public function setAvatar($avatar) {
         $this->avatar = $avatar;
     }
-
     public function setNome($nome) {
         $this->nome = $nome;
     }
     public function setPassword($password) {
         $this->password = $password;
+    }
+    public function updateSalt($salt){
+        $this->salt += $salt;
     }
     public function getAvatar() {
         return $this->avatar;
