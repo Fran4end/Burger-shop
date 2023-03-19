@@ -12,6 +12,7 @@ if(isset($_REQUEST['name'])){
     } catch (\Throwable $th) {
         header('Location: ../Views/Login/LoginPage.html');
     }
+    
     if($_REQUEST['password'] == $user->getPassword()){ // verifica che la password corrisponda
         $_SESSION['auth'] = true;
         $_SESSION['user'] = $user->toJSON();
@@ -22,7 +23,4 @@ if(isset($_REQUEST['name'])){
     }
 }else{
     header('Location: ../Views/Login/LoginPage.html');
-}
-
-
-?> 
+} 

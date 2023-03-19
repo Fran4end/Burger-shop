@@ -30,6 +30,20 @@ include 'Panino.php';
 // $ingrediente = new Ingrediente();
 // $ingrediente->getIngredienteById(2);
 // echo $ingrediente->toJSON();
+/* 
+{
+  "Ingredient_ID": 2,
+  "Ingredient_Name": "bisi",
+  "Image": "ciao.png",
+  "Price": 44
+}
+*/
+// print_r($ingrediente->getAll());
+/* Array (
+    [0] => Array ( [id] => 2 [prezzo] => 44 [immagine] => ciao.png [nome] => bisi ) 
+    [1] => Array ( [id] => 3 [prezzo] => 2 [immagine] => verza.png [nome] => verza ) 
+   )
+*/
 
 // TEST PANINO
 // $panino = new Panino();

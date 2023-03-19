@@ -45,6 +45,8 @@ class Panino
         return $this;
     }
 
+    // This method requires the Panino id, so the Panino row in the db must exist,
+    // therefor createBurger() must be called at least once before this method  
     public function addIngrediente($id_ingrediente, $id_ordine, $n = 1)
     {
         for ($i=0; $i < $n; $i++) { 
