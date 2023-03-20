@@ -29,8 +29,8 @@ class Utente
 
     public function createUtente() {
         print_r($this);
-        $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`salt`,`avatar`) VALUES (?, ?, ?, ?)");
-        $parms = [$this->nome, $this->password, $this->salt, $this->avatar];
+        $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`saldo`,`avatar`) VALUES (?, ?, ?, ?)");
+        $parms = [$this->nome, $this->password, $this->saldo, $this->avatar];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
         return $this;
@@ -46,7 +46,7 @@ class Utente
         $this->id = $res[0]['id'];
         $this->nome = $res[0]['nome']; 
         $this->password = $res[0]['password']; 
-        $this->salt = $res[0]['salt'];
+        $this->saldo= $res[0]['saldo'];
         $this->avatar = $res[0]['avatar']; 
         return $this;
     }
@@ -61,10 +61,21 @@ class Utente
         $this->id = $res['id'];
         $this->nome = $res['nome']; 
         $this->password = $res['password']; 
-        $this->salt = $res['salt'];
+        $this->saldo = $res['saldo'];
         $this->avatar = $res['avatar']; 
         return $this;
     }
+
+    public function updateSaldo($saldo, $id) {
+        $stmt = $this->db->prepare('SELECT `saldo` FROM `utente` WHERE `id` = ?');
+        $parms = [$id];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->prepare("UPDATE `utente` SET `saldo`= ? WHERE `id` = ?");
+        $parms = [$res + $saldo, $id];
+        $stmt->execute($parms);
+    }
+
 
     public function getNome() {
         return $this->nome;
@@ -72,8 +83,8 @@ class Utente
     public function getPassword() {
         return $this->password;
     }
-    public function getSalt() {
-        return $this->salt;
+    public function getSaldo() {
+        return $this->saldo;
     } 
 
 
@@ -85,9 +96,6 @@ class Utente
     }
     public function setPassword($password) {
         $this->password = $password;
-    }
-    public function updateSalt($salt){
-        $this->salt += $salt;
     }
     public function getAvatar() {
         return $this->avatar;
@@ -101,7 +109,7 @@ class Utente
                             "Username" => $this->getNome(),
                             "Password" => $this->getPassword(),
                             "Avatar" => $this->getAvatar(),
-                            "Salt" => $this->salt)
+                            "Saldo" => $this->getSaldo())
                         );
     }
 }
