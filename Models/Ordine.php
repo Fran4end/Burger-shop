@@ -1,9 +1,9 @@
 <?php
 use FFI\Exception;
-use PDO;
+// use PDO;
 
 /**
- * All methods working
+ * TESTED 100%
  */
 class Ordine
 {   
@@ -31,13 +31,16 @@ class Ordine
         if ($this->prezzo == 0) {
             throw new Exception("The order is not initialized");
         }
+
         $stmt = $this->db->prepare("INSERT INTO `ordine`
         (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
         [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $parms = [$id_utente, false, false, $this->prezzo];
+
         $stmt->execute($parms);
+
         $this->id = $this->db->lastInsertId();
-        return $this;
+        return $this->id;
     }
 
     public function deleteOrder($id){

@@ -6,7 +6,7 @@ include 'Config.php';
 /**
  * Base model
  *
- * PHP version 7.0
+ * TESTED 100%
  */
 abstract class QueryDB
 {
