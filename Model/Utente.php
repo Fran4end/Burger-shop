@@ -10,7 +10,7 @@ class Utente
     private $id;
     private $nome;
     private $password;
-    private $salt;
+    private $saldo;
     private $avatar;
     private $db;
 
@@ -18,7 +18,7 @@ class Utente
         $this->db = QueryDB::getDB();
         $this->nome = $nome;
         $this->password = $password;
-        $this->salt = 1;
+        $this->saldo = 0;
         $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
         /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
     }
