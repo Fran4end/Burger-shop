@@ -17,14 +17,12 @@ function getIngredients(ingrediente, ammount, prezzo) {
     console.log(list['ingredients']);
 }
 
-<<<<<<< HEAD
-=======
+
 function getBack() {
     list = [];
 }
 
 //Json contenente ordine effettuato dall'utente
->>>>>>> 97f362e35fda88734542ea796c5ddd9fa442d5d2
 function buildJson() {
     text = document.querySelector('input').value;
     list['prezzo'] = price;

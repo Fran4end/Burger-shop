@@ -131,7 +131,20 @@ button{
     flex-wrap: nowrap;
 }
 
-#summary form > input[type = "submit"]{
+#summary form[id = "new-panino"] > input{
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #000000 !important;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#summary form > input[type = "button"]{
     padding: 15px 30px;
     border-radius: 10px;
     border: none;
