@@ -107,6 +107,4 @@ class Ingrediente
 $ingre = new Ingrediente();
 $ingre ->__construct();
 echo $ingre ->TabletoJSON();
-
-
 ?>
