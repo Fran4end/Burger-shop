@@ -26,11 +26,15 @@
 
             <div>
                 <p>Totale: <span id="total-price"></span> €</p>
-                <form action="" method="post">
-                    <input type="hidden" name="">
-                    <input type="reset" value="Annulla">
-                    <input type="submit" value="Ordina">
-                </form>
+                <div id="form">
+                    <form action="../../Controller/Annulla.php">
+                        <input type="submit" id="reset" value="Annulla">
+                    </form>
+                    <form action="" method="post">
+                        <input type="hidden" name="">
+                        <input type="submit" value="Ordina">
+                    </form>
+                </div>
             </div>
         </div>
     </main>

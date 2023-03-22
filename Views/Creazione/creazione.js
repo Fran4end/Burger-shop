@@ -17,10 +17,6 @@ function getIngredients(ingrediente, ammount, prezzo) {
     console.log(list['ingredients']);
 }
 
-function getBack() {
-    list = [];
-}
-
 function buildJson() {
     text = document.querySelector('input').value;
     list['prezzo'] = price;

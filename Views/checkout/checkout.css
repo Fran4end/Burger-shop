@@ -126,13 +126,12 @@ button{
     margin-right: 5px;
 }
 
-#summary > form{
-    position: absolute;
-    bottom: 25px;
-    right: 0px;
+#summary #form{
+    display: flex; 
+    flex-wrap: nowrap;
 }
 
-#summary > div > form > input[type = "submit"]{
+#summary form > input[type = "submit"]{
     padding: 15px 30px;
     border-radius: 10px;
     border: none;
@@ -143,7 +142,7 @@ button{
     cursor: pointer;
 }
 
-#summary > div > form > input[type = "reset"]{
+#summary form > input[id = "reset"]{
     padding: 15px 30px;
     border-radius: 10px;
     border: none;
