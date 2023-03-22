@@ -1,8 +1,8 @@
+var price = 0; 
 var list = new Array();
 list['ingredients'] = new Array();
-var price = 0; 
-var data = '[{"id":1,"prezzo":0.5,"immagine":"Pane-bianco.png","nome":"Pane Bianco","tipo":"pane"},{"id":2,"prezzo":1.25,"immagine":"wurstel.png","nome":"Wurstel","tipo":"carne"},{"id":3,"prezzo":0.8,"immagine":"Pane-integrale.png","nome":"Pane Integrale","tipo":"pane"},{"id":4,"prezzo":1.25,"immagine":"hamburger.png","nome":"Wurstel","tipo":"carne"}]';
 
+//aggiunta dell'ingrediente al panino su richiesta dell'utente
 function getIngredients(ingrediente, ammount, prezzo) {
     if (list['ingredients'][ingrediente] == null && ammount == 1) {
         list['ingredients'][ingrediente] = 1;
@@ -17,10 +17,12 @@ function getIngredients(ingrediente, ammount, prezzo) {
     console.log(list['ingredients']);
 }
 
+
 function getBack() {
     list = [];
 }
 
+//Json contenente ordine effettuato dall'utente
 function buildJson() {
     text = document.querySelector('input').value;
     list['prezzo'] = price;
@@ -30,13 +32,10 @@ function buildJson() {
     
 }
 
+
+//Richiesta ingredienti disponibili nel database
 function getHtml() {
-    fetch('../../Models/Ingrediente.php',
-    {
-        method: 'get'
-    }
-    )
-    
+    fetch('../../Controller/Ingredients.php')
     .then(data =>{
         data = JSON.parse(data);
         data.forEach(element => {
@@ -82,10 +81,7 @@ function getHtml() {
             console.log(div1);
             document.getElementById(element.tipo).appendChild(div1);
         });
+       
     }
     )
-    
-
 }
-
-//'getIngredients('+element.nome+','+ -1+','+ element.prezzo+')'

@@ -13,7 +13,7 @@ class Config
      * Database name
      * @var string
      */
-    const DB_NAME = 'thias_burger';
+    const DB_NAME = 'thias-burger';
 
     /**
      * Database user
