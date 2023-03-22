@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: burger-shop
+-- Host: localhost    Database: thias-burger
 -- ------------------------------------------------------
 -- Server version	10.4.24-MariaDB
 
@@ -16,6 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `thias-burger`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `thias-burger` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `thias-burger`;
+
+--
 -- Table structure for table `ingrediente`
 --
 
@@ -25,6 +33,9 @@ DROP TABLE IF EXISTS `ingrediente`;
 CREATE TABLE `ingrediente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prezzo` float NOT NULL,
+  `immagine` varchar(200) NOT NULL,
+  `nome` varchar(200) NOT NULL,
+  `categoria` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -75,6 +86,8 @@ CREATE TABLE `panino` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ordine` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
+  `pronto` tinyint(1) NOT NULL,
+  `prezzo` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -123,7 +136,7 @@ CREATE TABLE `utente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `salt` tinyint(1) NOT NULL,
+  `saldo` double NOT NULL,
   `avatar` varchar(800) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -147,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-15  8:32:00
+-- Dump completed on 2023-03-22  8:34:30
