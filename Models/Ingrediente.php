@@ -16,6 +16,7 @@ class Ingrediente
     private $prezzo;
     private $immagine;
     private $nome;
+    private $categoria;
     private $db;
 
     public function __construct(){
@@ -39,7 +40,8 @@ class Ingrediente
         $this->id = $res['id'];
         $this->nome = $res['nome']; 
         $this->prezzo = $res['prezzo']; 
-        $this->immagine = $res['immagine']; 
+        $this->immagine = $res['immagine'];
+        $this->categoria = $res['categoria'];
         return $res;
     }
 
@@ -78,6 +80,16 @@ class Ingrediente
         return $this->immagine;
     }
 
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria($cat)
+    {
+        $this->categoria = $cat;
+    }
+
     public function setImmagine($newImmagine)
     {
         $this->immagine = $newImmagine;
@@ -89,7 +101,8 @@ class Ingrediente
                         array("Ingredient_ID" => $this->getId(), 
                             "Ingredient_Name" => $this->getNome(), 
                             "Image" => $this->getImmagine(), 
-                            "Price" => $this->getPrezzo())
+                            "Price" => $this->getPrezzo(),
+                            "Category" => $this->getCategoria())
                         );
     }
 }
