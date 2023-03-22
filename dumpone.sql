@@ -121,6 +121,10 @@ DROP TABLE IF EXISTS `utente`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `utente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `salt` tinyint(1) NOT NULL,
+  `avatar` varchar(800) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
