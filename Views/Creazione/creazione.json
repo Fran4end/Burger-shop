@@ -1,0 +1,49 @@
+[
+    {
+        "prezzo": 0.5,
+        "immagine": "Pane-bianco.png",
+        "nome": "Pane Bianco",
+        "tipo": "pane",
+        "ingredienti":[
+           {
+                "nome": "bisi",
+                "quantità": 2
+           },
+           {
+                "nome": "verza",
+                "quantità": 5
+           } 
+        ]
+    },
+    {
+        "prezzo": 1.25,
+        "immagine": "wurstel.png",
+        "nome": "Wurstel",
+        "tipo": "carne",
+        "ingredienti":[
+           {
+                "nome": "bisi",
+                "quantità": 3
+           }
+        ]
+    },
+    {
+        "prezzo": 0.8,
+        "immagine": "Pane-integrale.png",
+        "nome": "Pane Integrale",
+        "tipo": "pane",
+        "ingredienti":[
+           {
+                "nome": "verza",
+                "quantità": 1
+           } 
+        ]
+    },
+    {
+        "prezzo": 1.25,
+        "immagine": "hamburger.png",
+        "nome": "Wurstel",
+        "tipo": "carne",
+        "ingredienti":[]
+    }
+]

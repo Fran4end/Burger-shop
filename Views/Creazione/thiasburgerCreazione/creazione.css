@@ -1,0 +1,82 @@
+#banner{
+    
+    border: solid black 3px;
+    height: 70px;
+    background-color: #ffc21c;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    margin-left: 0%;
+   
+ }
+
+
+ #frase{
+    border: solid black 3px;
+    height: 70px;
+    background-color: black;
+    color: #ffc21c;
+    text-align: center;
+    font-size: 50px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 30px;
+    border-radius: 12px;
+ }
+
+body{
+    background-color: antiquewhite;
+   /* background-image: url("logo.png");
+    background-repeat: repeat;
+    background-size: 500px;*/
+}
+
+#prodotto{
+    border: solid black 3px;
+    height: 50px;
+    background-color: #ffc21c;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 120px;
+   font-weight: bold;
+  
+}
+
+.ingrediente{
+   
+    border:solid black 1px; ;
+    font-size: 20px;
+    margin-left: 7%;
+    margin-top: 60px;
+    margin-right: 0%;
+    border-radius: 12px;
+
+}
+.bottone{
+    background-color: #ffc21c;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-left: 10px;
+    
+   
+ }
+
+ #bottoni2{
+    text-align: right;
+    margin-top: 80px;
+
+ }
+ 
+ #aggdim{
+    height: 20px;
+    width: 20px;
+    border-radius: 12px;
+ }
+ .singlebutton{
+   display:inline-block;
+ }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport">
+        <title>Order</title>
+    </head>
+    <body>
+        <form action="../../Controller/Order.php" method="post">
+            <input name="json" type="hidden" value='{
+                "hamburgers":[
+                   {
+                      "name":"Classic",
+                      "price":6.99,
+                      "ingredients":[
+                         {
+                            "name":"bun",
+                            "amount":2
+                         }
+                      ]
+                   },
+                   {
+                      "name":"Classic",
+                      "price":6.99,
+                      "ingredients":[
+                         {
+                            "name":"bun",
+                            "amount":2
+                         }
+                      ]
+                   }
+                ]
+             }'>
+            <input type="submit" value="ORDINA"></button>
+        </form>
+    </body>
+</html>
