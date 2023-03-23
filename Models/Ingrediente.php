@@ -19,11 +19,12 @@ class Ingrediente
     private $categoria;
     private $db;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->db = QueryDB::getDB();
     }
 
-    public static function getAll()
+    public function getAll()
     {
         $db = QueryDB::getDB();
         $stmt = $db->query('SELECT * FROM ingrediente');
@@ -38,8 +39,8 @@ class Ingrediente
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $res = $res[0];
         $this->id = $res['id'];
-        $this->nome = $res['nome']; 
-        $this->prezzo = $res['prezzo']; 
+        $this->nome = $res['nome'];
+        $this->prezzo = $res['prezzo'];
         $this->immagine = $res['immagine'];
         $this->categoria = $res['categoria'];
         return $res;
@@ -64,7 +65,7 @@ class Ingrediente
     {
         $this->nome = $newNome;
     }
-    
+
     public function getPrezzo()
     {
         return $this->prezzo;
@@ -96,22 +97,21 @@ class Ingrediente
     }
 
     //RETURNS JSON
-    public function toJSON(){
+    public function toJSON()
+    {
         return json_encode(
-                        array("Ingredient_ID" => $this->getId(), 
-                            "Ingredient_Name" => $this->getNome(), 
-                            "Image" => $this->getImmagine(), 
-                            "Price" => $this->getPrezzo(),
-                            "Category" => $this->getCategoria())
-                        );
+            array(
+                "Ingredient_ID" => $this->getId(),
+                "Ingredient_Name" => $this->getNome(),
+                "Image" => $this->getImmagine(),
+                "Price" => $this->getPrezzo(),
+                "Category" => $this->getCategoria()
+            )
+        );
     }
-<<<<<<< HEAD
-}
 
-$ingre = new Ingrediente();
-$ingre ->__construct();
-echo $ingre ->TabletoJSON();
-?>
-=======
 }
->>>>>>> 3af3dbca12b1558e3c007df7064331670861f0bd
+$ingre = new Ingrediente();
+$ingre->__construct();
+echo json_encode($ingre->getAll());
+?>

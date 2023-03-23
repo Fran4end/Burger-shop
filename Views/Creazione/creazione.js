@@ -39,13 +39,13 @@ function buildJson() {
 
 //Richiesta ingredienti disponibili nel database
 function getHtml() {
-    /*fetch('../../Controller/Ingredients.php')
-    .then(data =>{*/
+    fetch('../../Controller/Ingredients.php')
+    .then(data =>{
     data = JSON.parse(data);
     data.forEach(element => {
         document.querySelector('#' + element.tipo).innerHTML += buildElement(element.nome, element.prezzo, element.immagine); 
     });
-
+})
 }
 
 function buildElement(name, price, image){
