@@ -6,6 +6,6 @@ print_r(ingredientsToJson($ingredient->getAll()));
 
 function ingredientsToJson($ingredients)
 {
-  return json_encode($ingredient->getAll());
+  return json_encode($ingredients->getAll());
 }
 
