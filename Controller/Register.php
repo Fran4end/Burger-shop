@@ -12,7 +12,7 @@ if(isset($_REQUEST['name']) && isset($_REQUEST['password']) && $_REQUEST['name']
     print_r($user->toJSON());
     $_SESSION['auth'] = true;
     $_SESSION['user'] = $user->toJSON();
-    header('Location: ../Views/Mainpage.html');
+    header('Location: ../Views/Home/home.html');
 }else{
     header('Location: ../Views/Register/Register.html');
     $_SESSION['auth'] = false;
