@@ -14,7 +14,8 @@ class Panino
     private $ingredienti;
     private $db;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->db = QueryDB::getDB();
         $this->pronto = false;
         $this->prezzo = 0;
@@ -33,7 +34,8 @@ class Panino
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createBurger($id_ordine) {
+    public function createBurger($id_ordine)
+    {
         if ($this->prezzo == 0) {
             throw new Exception("The burger is not initialized");
             return;
@@ -49,10 +51,10 @@ class Panino
     // therefor createBurger() must be called at least once before this method  
     public function addIngrediente($id_ingrediente, $id_ordine, $n = 1)
     {
-        for ($i=0; $i < $n; $i++) { 
+        for ($i = 0; $i < $n; $i++) {
             $this->ingredienti[] = (new Ingrediente())->getIngredienteById($id_ingrediente);
         }
-        
+
         $stmt = $this->db->prepare("INSERT INTO `preparazione` (`id_panino`,`id_ingrediente`, `quantità`, `id_ordine`) 
         VALUES (?, ?, ?, ?)");
         $parms = [$this->id, $id_ingrediente, $n, $id_ordine];
@@ -83,21 +85,24 @@ class Panino
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo $res;
         $this->id = $res['id'];
-        $this->nome = $res['nome']; 
-        $this->pronto = $res['pronto']; 
+        $this->nome = $res['nome'];
+        $this->pronto = $res['pronto'];
         $this->prezzo = $res['prezzo'];
-        $this->ingredienti = $res['ingredienti']; 
+        $this->ingredienti = $res['ingredienti'];
         return $this;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
-    public function getNome() {
+    public function getNome()
+    {
         return $this->nome;
     }
 
-    public function getPrezzo() {
+    public function getPrezzo()
+    {
         return $this->prezzo;
     }
 
@@ -115,27 +120,32 @@ class Panino
     {
         $this->ingredienti = $ingredienti;
     }
-    public function setPronto($id) {
+    public function setPronto($id)
+    {
         $stmt = $this->db->prepare("UPDATE `panino` SET `pronto`= ? WHERE `id` = ?");
         $parms = [true, $id];
         $stmt->execute($parms);
     }
-    public function setNome($nome) {
+    public function setNome($nome)
+    {
         $this->nome = $nome;
     }
-    public function setPrezzo($prezzo) {
+    public function setPrezzo($prezzo)
+    {
         $this->prezzo = $prezzo;
     }
 
     //RETURNS JSON
-    public function toJSON(){
+    public function toJSON()
+    {
         return json_encode(
-                        array(
-                            "Burger_ID" => $this->getId(),
-                            "Burger_Name" => $this->getNome(),
-                            "Burger_Price" => $this->getPrezzo(),
-                            "Ingredients" => $this->getIngredienti(),
-                            "Ready" => $this->getPronto())
-                        );
+            array(
+                "Burger_ID" => $this->getId(),
+                "Burger_Name" => $this->getNome(),
+                "Burger_Price" => $this->getPrezzo(),
+                "Ingredients" => $this->getIngredienti(),
+                "Ready" => $this->getPronto()
+            )
+        );
     }
 }

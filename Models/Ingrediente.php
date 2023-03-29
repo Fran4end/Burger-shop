@@ -111,7 +111,4 @@ class Ingrediente
     }
 
 }
-$ingre = new Ingrediente();
-$ingre->__construct();
-echo json_encode($ingre->getAll());
 ?>

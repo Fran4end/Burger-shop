@@ -1,17 +1,18 @@
 #banner{
-    
-    border: solid black 3px;
+    border: solid black 2px;
     height: 70px;
     background-color: #ffc21c;
     color: black;
     text-align: center;
     font-size: 40px;
-    margin-left: 0%;
+    justify-items: center;
+    
    
  }
 
  body{
-     background-color: antiquewhite;
+     background-color: white;
+     margin: 0%;
  }
 
  #logo{
