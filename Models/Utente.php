@@ -76,7 +76,9 @@ class Utente
         $stmt->execute($parms);
     }
 
-
+    public function getId() {
+        return $this->id;
+    } 
     public function getNome() {
         return $this->nome;
     }

@@ -23,10 +23,10 @@ if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
    }
 
    // if the user hasn't enough 'schei' the server doesn't do anything
-   if($amount > $user->getSalt()){
+   if($amount > $user->getSaldo()){
       return;
    }else{ // otherwise decrement the salt (doesn't affect db)
-      $user->updateSalt(-$amount);
+      $user->updateSaldo(-$amount, $user_id);
    }
 
    $order->setPrezzo($amount);

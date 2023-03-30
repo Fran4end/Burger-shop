@@ -1,11 +1,6 @@
 <?php
 include '../Models/Ingrediente.php';
-$ingredient = new Ingrediente;
-print_r(ingredientsToJson($ingredient->getAll()));
+$ingredient = new Ingrediente();
+echo json_encode($ingredient->getAll());
 
-
-function ingredientsToJson($ingredients)
-{
-  return json_encode($ingredients->getAll());
-}
 

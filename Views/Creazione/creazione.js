@@ -40,14 +40,15 @@ function buildJson() {
 //Richiesta ingredienti disponibili nel database
 function getHtml() {
     fetch('../../Controller/Ingredients.php')
+    .then((res) => res.json())
     .then(data =>{
-    data = JSON.parse(data);
+        console.log(data);
     data.forEach(element => {
-        document.querySelector('#' + element.tipo).innerHTML += buildElement(element.nome, element.prezzo, element.immagine); 
+        document.querySelector('#' + element.categoria).innerHTML += buildElement(element.nome, element.prezzo.toFixed(2), element.immagine); 
     });
 })
 }
 
 function buildElement(name, price, image){
-    return '<div><div><img src="Image/'+ image +'"></div><div><p id="name">'+ name +'</p><span><button>-</button><button>+</button></span><p id="price"><span id="amount">'+ price +'</span>€</p></div></div>'; 
+    return '<div><div><img src='+ image +'></div><div><p id="name">'+ name.charAt(0).toUpperCase() + name.replaceAll("_"," ").slice(1) +'</p><span><button>-</button><button>+</button></span><p id="price"><span id="amount">'+ price +'</span>€</p></div></div>'; 
 }
