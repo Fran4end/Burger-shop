@@ -1,12 +1,13 @@
 <?php
 use FFI\Exception;
+
 // use PDO;
 
 /**
  * TESTED 100%
  */
 class Ordine
-{   
+{
 
     private $id;
     private $consegnato;
@@ -14,7 +15,8 @@ class Ordine
     private $prezzo;
     private $db;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->db = QueryDB::getDB();
         $this->pagato = false;
         $this->prezzo = 0;
@@ -22,19 +24,22 @@ class Ordine
         $this->consegnato = false;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $stmt = $this->db->query('SELECT * FROM ordine');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createOrder($id_utente) {
+    public function createOrder($id_utente)
+    {
         if ($this->prezzo == 0) {
             throw new Exception("The order is not initialized");
         }
 
         $stmt = $this->db->prepare("INSERT INTO `ordine`
-        (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)", 
-        [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)",
+            [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]
+        );
         $parms = [$id_utente, false, false, $this->prezzo];
 
         $stmt->execute($parms);
@@ -43,7 +48,8 @@ class Ordine
         return $this->id;
     }
 
-    public function deleteOrder($id){
+    public function deleteOrder($id)
+    {
         $stmt = $this->db->prepare("DELETE FROM `ordine` WHERE `id` = ?");
         $parms = [$id];
         return $stmt->execute($parms);
@@ -57,46 +63,56 @@ class Ordine
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo $res;
         $this->id = $res['id'];
-        $this->consegnato = $res['consegnato']; 
-        $this->pagato = $res['pagato']; 
-        $this->prezzo = $res['prezzo']; 
+        $this->consegnato = $res['consegnato'];
+        $this->pagato = $res['pagato'];
+        $this->prezzo = $res['prezzo'];
         return $this;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
-    public function getConsegnato() {
+    public function getConsegnato()
+    {
         return $this->consegnato;
     }
-    public function getPagato() {
+    public function getPagato()
+    {
         return $this->pagato;
     }
-    public function getPrezzo() {
+    public function getPrezzo()
+    {
         return $this->prezzo;
     }
 
-    public function setConsegnato($id) {
+    public function setConsegnato($id)
+    {
         $stmt = $this->db->prepare("UPDATE `ordine` SET `consegnato`= ? WHERE `id` = ?");
         $parms = [true, $id];
         $stmt->execute($parms);
     }
-    public function setPagato($id) {
+    public function setPagato($id)
+    {
         $stmt = $this->db->prepare("UPDATE `ordine` SET `pagato`=? WHERE `id` = ?");
         $parms = [true, $id];
         $stmt->execute($parms);
     }
-    public function setPrezzo($prezzo) {
+    public function setPrezzo($prezzo)
+    {
         $this->prezzo = $prezzo;
     }
 
     //RETURNS JSON
-    public function toJSON(){
+    public function toJSON()
+    {
         return json_encode(
-                        array("Order_ID" => $this->getId(), 
-                        "Price" => $this->getPrezzo(), 
-                        "Payed" => $this->getPagato(), 
-                        "Delivered" => $this->getConsegnato())
-                        );
+            array(
+                "Order_ID" => $this->getId(),
+                "Price" => $this->getPrezzo(),
+                "Payed" => $this->getPagato(),
+                "Delivered" => $this->getConsegnato()
+            )
+        );
     }
 }

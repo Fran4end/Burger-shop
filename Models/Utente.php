@@ -14,7 +14,8 @@ class Utente
     private $avatar;
     private $db;
 
-    public function __construct($nome, $password){
+    public function __construct($nome, $password)
+    {
         $this->db = QueryDB::getDB();
         $this->nome = $nome;
         $this->password = $password;
@@ -22,12 +23,14 @@ class Utente
         $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
         /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
     }
-    public function getAll(){
+    public function getAll()
+    {
         $stmt = $this->db->query('SELECT * FROM `utente`');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createUtente() {
+    public function createUtente()
+    {
         print_r($this);
         $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`saldo`,`avatar`) VALUES (?, ?, ?, ?)");
         $parms = [$this->nome, $this->password, $this->saldo, $this->avatar];
@@ -44,10 +47,10 @@ class Utente
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //var_dump($res);
         $this->id = $res[0]['id'];
-        $this->nome = $res[0]['nome']; 
-        $this->password = $res[0]['password']; 
-        $this->saldo= $res[0]['saldo'];
-        $this->avatar = $res[0]['avatar']; 
+        $this->nome = $res[0]['nome'];
+        $this->password = $res[0]['password'];
+        $this->saldo = $res[0]['saldo'];
+        $this->avatar = $res[0]['avatar'];
         return $this;
     }
 
@@ -59,14 +62,15 @@ class Utente
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo $res;
         $this->id = $res['id'];
-        $this->nome = $res['nome']; 
-        $this->password = $res['password']; 
+        $this->nome = $res['nome'];
+        $this->password = $res['password'];
         $this->saldo = $res['saldo'];
-        $this->avatar = $res['avatar']; 
+        $this->avatar = $res['avatar'];
         return $this;
     }
 
-    public function updateSaldo($saldo, $id) {
+    public function updateSaldo($saldo, $id)
+    {
         $stmt = $this->db->prepare('SELECT `saldo` FROM `utente` WHERE `id` = ?');
         $parms = [$id];
         $stmt->execute($parms);
@@ -79,39 +83,48 @@ class Utente
     public function getId() {
         return $this->id;
     } 
-    public function getNome() {
+    public function getNome()
+    {
         return $this->nome;
     }
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
-    public function getSaldo() {
+    public function getSaldo()
+    {
         return $this->saldo;
-    } 
+    }
 
 
-    public function setAvatar($avatar) {
+    public function setAvatar($avatar)
+    {
         $this->avatar = $avatar;
     }
-    public function setNome($nome) {
+    public function setNome($nome)
+    {
         $this->nome = $nome;
     }
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
     }
-    public function getAvatar() {
+    public function getAvatar()
+    {
         return $this->avatar;
     }
 
     //RETURNS JSON
-    public function toJSON(){
+    public function toJSON()
+    {
         return json_encode(
-                        array(
-                            "User_ID" => $this->id,
-                            "Username" => $this->getNome(),
-                            "Password" => $this->getPassword(),
-                            "Avatar" => $this->getAvatar(),
-                            "Saldo" => $this->getSaldo())
-                        );
+            array(
+                "User_ID" => $this->id,
+                "Username" => $this->getNome(),
+                "Password" => $this->getPassword(),
+                "Avatar" => $this->getAvatar(),
+                "Saldo" => $this->getSaldo()
+            )
+        );
     }
 }
