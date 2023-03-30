@@ -13,9 +13,9 @@
 
 <body onload="getHtml()">
     <div id="banner">
-        <i class="fa fa-home"></i>
+        <a href="/Burger-shop/Controller/Annulla.php"><i class="fa fa-home"></i></a>
         <p>Componi il tuo panino</p>
-        <i class="fa fa-shopping-cart"></i>
+        <a href="/Burger-shop/Controller/Order.php"><i class="fa fa-shopping-cart"></i></a>
     </div>
 
     <div id="products-selector">
@@ -44,14 +44,5 @@
     
         </div>
     </div>
-
-    <div id="bottoni2">
-        <form action="../../Controller/Annulla.php">
-            <button class="bottone" type="submit" onclick="getBack()">ANNULLA</button>
-        </form>
-        <button class="bottone" type="submit" onclick="buildJson()">AVANTI</button>
-    </div>
-
-
 </body>
 </html>

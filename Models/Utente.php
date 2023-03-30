@@ -19,7 +19,7 @@ class Utente
         $this->db = QueryDB::getDB();
         $this->nome = $nome;
         $this->password = $password;
-        $this->saldo = 0;
+        $this->saldo = 10000;
         $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
         /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
     }
@@ -45,7 +45,6 @@ class Utente
         $parms = [$name];
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($res);
         $this->id = $res[0]['id'];
         $this->nome = $res[0]['nome'];
         $this->password = $res[0]['password'];

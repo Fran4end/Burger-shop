@@ -26,7 +26,7 @@ function getBack() {
 
 //Json contenente ordine effettuato dall'utente
 function buildJson() {
-    text = document.querySelector('input').value;
+    let text = document.querySelector('input').value;
     list['prezzo'] = price;
     list['nome'] = text;
     console.log(list);

@@ -18,6 +18,10 @@
     margin-bottom: 10px;
 }
 
+i{
+    color: black;
+}
+
 #banner{
     padding: 20px 30px;
     background-color: var(--primary-color); 

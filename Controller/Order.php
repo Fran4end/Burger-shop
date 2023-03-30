@@ -24,6 +24,14 @@ if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
 
    // if the user hasn't enough 'schei' the server doesn't do anything
    if($amount > $user->getSaldo()){
+      ?>
+      <script>
+         if (!alert('no schei')) {
+            document.location = '/Burger-shop/Controller/Annulla.php';
+         }
+      </script>
+      <?php
+      header('Location: ../Views/Home/home.html');
       return;
    }else{ // otherwise decrement the salt (doesn't affect db)
       $user->updateSaldo(-$amount, $user_id);
@@ -46,16 +54,24 @@ if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
       // creates all the Preparazioni
       foreach($value['ingredienti'] as $ing){
          $panino->addIngrediente(
-            getIngredientId($ing['nome'], $all_ingredients, $ing['quantità']),
+            getIngredientId($ing['nome'], $all_ingredients),
             $order_id,
+            $ing['quantità']
          );
       }
    }
-
-   // after completing the operations redirects to the home page
    header('Location: ../Views/Home/home.html');
 
+}else{
+   ?>
+      <script>
+         if (!alert('nessun parametro passato, ci scusiamo, ma i nostri programmatori sono sottopagati ;)')) {
+            document.location = '/Burger-shop/Controller/Annulla.php';
+         }
+      </script>
+      <?php
 }
+
 
 function getIngredientId ($name, $all){
    foreach($all as $ing){
