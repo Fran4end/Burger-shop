@@ -32,8 +32,6 @@ function buildJson() {
     console.log(list);
     console.log(JSON.stringify(list));
     return JSON.stringify(list);
-
-
 }
 
 

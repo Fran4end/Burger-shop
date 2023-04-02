@@ -14,3 +14,13 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
     - inserire testo qui
 
 #### Diagram UML ![UML](./Images/UML.png)
+
+
+
+### TODO
+- sistemare selezione ingredienti in creazione
+- fare php controller che gestisce ogni singolo panino
+- sistemare in creazione il tasto ordina (carello)
+- cambiare prezzo quandoselezioni più panini in checkout
+- sistemare in checkout il tasto ordina
+- far si che nella cerazione, quando premo ordina, mi fa inserire il nome del panino con una form e poi si dirige verso il checkout
