@@ -1,8 +1,6 @@
 var price = 0;
 let list = {};
 list['ingredients'] = {};
-var data = '[{"id":1,"prezzo":0.5,"immagine":"paninohamburgernorm.png","nome":"Pane Bianco","tipo":"pane"},{"id":2,"prezzo":1.25,"immagine":"wurstel.jpg","nome":"Wurstel","tipo":"carne"},{"id":3,"prezzo":0.8,"immagine": "paneintegrale.jpg","nome":"Pane Integrale","tipo":"pane"},{"id":4,"prezzo":1.25,"immagine":"hamburger.jpg","nome":"Wurstel","tipo":"carne"}]';
-
 
 //aggiunta dell'ingrediente al panino su richiesta dell'utente
 function getIngredients(ingrediente, ammount, prezzo) {

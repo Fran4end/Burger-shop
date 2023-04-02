@@ -41,10 +41,13 @@ class Utente
 
     public function getUtenteByName($name)
     {
-        $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `nome` = ? LIMIT 1');
+        $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `nome` = ?');
         $parms = [$name];
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($res)) {
+            return $res;
+        }
         $this->id = $res[0]['id'];
         $this->nome = $res[0]['nome'];
         $this->password = $res[0]['password'];
@@ -59,7 +62,6 @@ class Utente
         $parms = [$id];
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo $res;
         $this->id = $res['id'];
         $this->nome = $res['nome'];
         $this->password = $res['password'];
