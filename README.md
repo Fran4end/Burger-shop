@@ -13,7 +13,7 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
 - **C**ontrol è la parte di gestione degli input prima che questi possano raggiungere il model. Questo accade sia per praticità, sia per separare la sezione input dalla parte gestionale, in modo che, qualora venisse inserito un input potenzialmente dannoso, questo possa essere controllato e fermato in tempo. Nel nostro caso, il Control si è occupato di: 
     - inserire testo qui
 
-#### Diagram UML ![UML](./Images/UML.png)
+#### Diagram UML ![UML](./Docs/UML.png)
 
 
 
@@ -24,3 +24,4 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
 - cambiare prezzo quandoselezioni più panini in checkout
 - sistemare in checkout il tasto ordina
 - far si che nella cerazione, quando premo ordina, mi fa inserire il nome del panino con una form e poi si dirige verso il checkout
+- modificare il modo in cui checkout.js legge il json
