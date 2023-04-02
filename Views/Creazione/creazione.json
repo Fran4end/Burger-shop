@@ -1,49 +1,70 @@
 [
     {
-        "prezzo": 0.5,
-        "immagine": "Pane-bianco.png",
-        "nome": "Pane Bianco",
-        "tipo": "pane",
+        "nome": "Classic",
+        "prezzo": 10,
+        "pane": "pane_bianco",
         "ingredienti":[
            {
-                "nome": "bisi",
+                "nome": "pomodoro",
                 "quantità": 2
            },
            {
-                "nome": "verza",
-                "quantità": 5
-           } 
-        ]
-    },
-    {
-        "prezzo": 1.25,
-        "immagine": "wurstel.png",
-        "nome": "Wurstel",
-        "tipo": "carne",
-        "ingredienti":[
-           {
-                "nome": "bisi",
+                "nome": "pomodoro",
                 "quantità": 3
-           }
-        ]
-    },
-    {
-        "prezzo": 0.8,
-        "immagine": "Pane-integrale.png",
-        "nome": "Pane Integrale",
-        "tipo": "pane",
-        "ingredienti":[
-           {
-                "nome": "verza",
-                "quantità": 1
            } 
         ]
     },
     {
-        "prezzo": 1.25,
-        "immagine": "hamburger.png",
-        "nome": "Wurstel",
-        "tipo": "carne",
-        "ingredienti":[]
+        "nome": "Double Cheeseburger",
+        "prezzo": 6.99,
+        "pane": "pane_integrale",
+        "ingredienti":[
+           {
+                "nome": "pomodoro",
+                "quantità": 1
+           },
+           {
+                "nome": "cheddar",
+                "quantità": 2
+           },
+           {
+                "nome": "lattuga",
+                "quantità": 1
+            } 
+        ]
+    },
+    {
+        "nome": "Cheeseburger",
+        "prezzo": 7.45,
+        "pane": "pane_bianco",
+        "ingredienti":[
+           {
+                "nome": "pancetta",
+                "quantità": 3   
+           },
+           {
+                "nome": "Ketchup",
+                "quantità": 2
+           } 
+        ]
+    },
+    {
+        "nome": "Er panin ludro",
+        "prezzo": 11.31,
+        "pane": "pane_bianco",
+        "ingredienti":[
+           {
+                "nome": "pancetta",
+                "quantità": 5  
+           },
+           {
+                "nome": "Ketchup",
+                "quantità": 1
+           },
+           {
+            "nome": "hamburger_classico",
+            "quantità": 3
+            } 
+        ]
     }
 ]
