@@ -18,8 +18,3 @@ if(isset($_REQUEST['name']) && isset($_REQUEST['password']) && $_REQUEST['name']
     $_SESSION['auth'] = false;
     session_destroy();
 }
-
-
-
-
-?>

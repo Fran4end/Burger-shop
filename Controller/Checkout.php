@@ -1,12 +1,14 @@
 <?php
 
+// performs the checkout when the 'Ordina' button is pressed and saves everything in the db
+
 include '../Models/Panino.php';
 include '../Models/Ingrediente.php';
 include '../Models/Ordine.php';
 
 session_start();
 
-// if the user isn't logged
+// if the user isn't logged redirects to login
 if(!isset($_SESSION['user'])){
     ?>
         <script>
@@ -16,9 +18,10 @@ if(!isset($_SESSION['user'])){
     <?php
 }
 
-if (isset($_REQUEST['panino'])) {
-    // decodes the json
-    $json = json_decode($_REQUEST['panino'], true);
+if (isset($_SESSION['panino'])) {
+    // decodes the json and clear the SESSION
+    $json = json_decode($_SESSION['panino'], true);
+    unset($_SESSION['panino']);
 
     // gets the User form the db
     $user = new Utente('a', 'a');  //lazy initialization

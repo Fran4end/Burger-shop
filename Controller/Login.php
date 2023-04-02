@@ -23,4 +23,4 @@ if(isset($_REQUEST['name'])){
     }
 }else{
     header('Location: ../Views/Login/LoginPage.html');
-} 
+}
