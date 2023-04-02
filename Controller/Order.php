@@ -1,83 +1,53 @@
 <?php
 
-include '../Models/Panino.php';
-include '../Models/Ingrediente.php';
-include '../Models/Ordine.php';
+session_start();
 
-session_start();  
-
-if(isset($_REQUEST['json']) && isset($_SESSION['user'])){
-   // decodes the json
-   $json = json_decode($_REQUEST['json'], true);
-
-   // gets the User form the db
-   $user = new Utente('a', 'a');  //lazy initialization
-   $user_id = $_SESSION['user']['User_ID'];
-   $user->getUtenteById($user_id);
-
-   // creates the Ordine
-   $order = new Ordine();
-   $amount = 0;
-   foreach ($json as $value) {
-      $amount += $value['prezzo'];
-   }
-
-   // if the user hasn't enough 'schei' the server doesn't do anything
-   if($amount > $user->getSaldo()){
-      ?>
-      <script>
-         if (!alert('no schei')) {
-            document.location = '/Burger-shop/Controller/Annulla.php';
-         }
-      </script>
-      <?php
-      header('Location: ../Views/Home/home.html');
-      return;
-   }else{ // otherwise decrement the salt (doesn't affect db)
-      $user->updateSaldo(-$amount, $user_id);
-   }
-
-   $order->setPrezzo($amount);
-   $order_id = $order->createOrder($user_id);
-   
-   //creates the Panini
-   $ingrediente = new Ingrediente();
-   $all_ingredients = $ingrediente->getAll();
-   
-   $panino = new Panino();
-
-   foreach ($json as $value) {
-      $panino->setNome($value['nome']);
-      $panino->setPrezzo($value['prezzo']);
-      $panino->createBurger($order_id);
-
-      // creates all the Preparazioni
-      foreach($value['ingredienti'] as $ing){
-         $panino->addIngrediente(
-            getIngredientId($ing['nome'], $all_ingredients),
-            $order_id,
-            $ing['quantità']
-         );
-      }
-   }
-   header('Location: ../Views/Home/home.html');
-
-}else{
+// if the user isn't logged
+if(!isset($_SESSION['user'])){
    ?>
-      <script>
-         if (!alert('nessun parametro passato, ci scusiamo, ma i nostri programmatori sono sottopagati ;)')) {
-            document.location = '/Burger-shop/Controller/Annulla.php';
-         }
-      </script>
-      <?php
+       <script>
+           if (!alert('biricchino, non sei loggato'))
+               document.location = 'Login.php';
+       </script>
+   <?php
 }
 
+$_REQUEST['panino'] = '{
+   "nome": "Classic",
+   "prezzo": 10,
+   "pane": "pane_bianco",
+   "ingredienti":[
+      {
+           "nome": "pomodoro",
+           "quantità": 2
+      },
+      {
+           "nome": "pomodoro",
+           "quantità": 3
+      } 
+   ]
+}';
 
-function getIngredientId ($name, $all){
-   foreach($all as $ing){
-      if($ing['nome'] == $name){
-         return $ing['id'];
-      }
+// if a panino is passed, saves it in SESSION['order']
+if(isset($_REQUEST['panino']) && $_REQUEST['panino'] != ''){
+
+   // if the order field in SESSION already exists, add the new panino, otherwise creates the order in the SESSION
+   if(isset($_SESSION['order'])){
+      $order = json_decode($_SESSION['order'], true);
+      $order[] = json_decode($_REQUEST['panino'], true);
+      unset($_SESSION['order']);
+      $_SESSION['order'] = json_encode($order);
+   }else{
+      $order[] = json_decode($_REQUEST['panino'], true); 
+      $_SESSION['order'] = json_encode($order);
    }
-   return -1;
+
+   header('Location: ../Views/checkout/checkout.html');
+}else{ // redirects to home page
+   ?>
+       <script>
+           if (!alert('nessun parametro passato, ci scusiamo, ma i nostri programmatori sono sottopagati ;)'))
+               document.location = 'Annulla.php';
+       </script>
+   <?php
 }
