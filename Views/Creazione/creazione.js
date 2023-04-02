@@ -38,15 +38,40 @@ function buildJson() {
 //Richiesta ingredienti disponibili nel database
 function getHtml() {
     fetch('../../Controller/Ingredients.php')
-    .then((res) => res.json())
-    .then(data =>{
-        console.log(data);
-    data.forEach(element => {
-        document.querySelector('#' + element.categoria).innerHTML += buildElement(element.nome, element.prezzo.toFixed(2), element.immagine); 
-    });
-})
+        .then((res) => res.json())
+        .then(data => {
+            console.log(data);
+            data.forEach(element => {
+                document.querySelector('#' + element.categoria).innerHTML += buildElement(element.nome, element.prezzo.toFixed(2), element.immagine);
+            });
+        })
 }
 
-function buildElement(name, price, image){
-    return '<div><div><img src='+ image +'></div><div><p id="name">'+ name.charAt(0).toUpperCase() + name.replaceAll("_"," ").slice(1) +'</p><span><button>-</button><button>+</button></span><p id="price"><span id="amount">'+ price +'</span>€</p></div></div>'; 
+function buildElement(name, price, image) {
+    return '<div><div><img src=' + image + '></div><div><p id="name">' + name.charAt(0).toUpperCase() + name.replaceAll("_", " ").slice(1) + '</p><span><button>-</button><button>+</button></span><p id="price"><span id="amount">' + price + '</span>€</p></div></div>';
+}
+
+function goToChekout() {
+    Swal.fire({
+        title: 'Submit your Github username',
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Look up',
+        showLoaderOnConfirm: true,
+        preConfirm: (panino) => {
+            //TODO: chiamare il file php per passare il json e al chekout
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: `${result.value.login}'s avatar`,
+                imageUrl: result.value.avatar_url
+            })
+        }
+    })
+
 }
