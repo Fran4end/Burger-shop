@@ -51,27 +51,20 @@ function buildElement(name, price, image) {
     return '<div><div><img src=' + image + '></div><div><p id="name">' + name.charAt(0).toUpperCase() + name.replaceAll("_", " ").slice(1) + '</p><span><button>-</button><button>+</button></span><p id="price"><span id="amount">' + price + '</span>€</p></div></div>';
 }
 
+//Avvia un pop-up dove verrà chiesto il nome del panino e poi mandato alla pagina chekout
 function goToChekout() {
     Swal.fire({
-        title: 'Submit your Github username',
+        title: 'Scrivi il nome del panino',
         input: 'text',
         inputAttributes: {
             autocapitalize: 'off'
         },
         showCancelButton: true,
-        confirmButtonText: 'Look up',
+        confirmButtonText: 'vai al checkout',
         showLoaderOnConfirm: true,
         preConfirm: (panino) => {
             //TODO: chiamare il file php per passare il json e al chekout
         },
         allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: `${result.value.login}'s avatar`,
-                imageUrl: result.value.avatar_url
-            })
-        }
     })
-
 }
