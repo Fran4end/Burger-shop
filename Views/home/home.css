@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   padding: 20px 100px;
+   background: #ffc21c;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   z-index: 99;
+}
+img{
+   border-radius: 50%;
+}
+
 #banner{
    padding: 20px 30px;
    background-color: #ffc21c; 
@@ -43,4 +67,19 @@
 }
 #reg{
    margin-right: 1% ;
+}
+.logo{
+   font-size: 2em;
+   user-select: none;
+   justify-content: center;
+   text-align: center;
+   display: flex;
+}
+.navigation a{
+   position: relative;
+   font-size: 1.1em;
+   color: black;
+   text-decoration: none;
+   font-weight: 500;
+   margin-left: 40px;
 }
