@@ -38,10 +38,16 @@ header{
     font-weight: 500;
     margin-left: 40px;
 }
+img{
+    border-radius: 50%;
+}
 
 .logo{
     font-size: 2em;
     user-select: none;
+    justify-content: center;
+    text-align: center;
+    display: flex;
 }
 
 .wrapper {
