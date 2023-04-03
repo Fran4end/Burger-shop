@@ -11,6 +11,7 @@
 <?php
 
 require '../Models/Utente.php';
+require_once '../Models/pages.php';
 
 session_start();
 
@@ -30,14 +31,13 @@ if (
     } else {
 ?>
         <script>
-            
             $(document).ready(function () {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Il nome è già stato usato',
                 // footer: '<a href="">Why do I have this issue?</a>'
-            }).then(() => document.location = "../Views/Register/Register.html")
+            }).then(() => document.location = "./Register.php")
         })
         </script>
 <?php
@@ -47,6 +47,7 @@ if (
 
     $_SESSION['auth'] = false;
     session_destroy();
+    registerPage();
 }
 ?>
 
