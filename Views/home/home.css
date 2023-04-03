@@ -1,14 +1,12 @@
 #banner{
-    border: solid black 2px;
-    height: 70px;
-    background-color: #ffc21c;
-    color: black;
-    text-align: center;
-    font-size: 40px;
-    justify-items: center;
-    
-   
- }
+   padding: 20px 30px;
+   background-color: #ffc21c; 
+   font-size: 41px;
+   font-weight: bold;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+}
 
  body{
      background-color: white;
