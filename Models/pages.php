@@ -52,9 +52,13 @@ function registerPage()
 function loginPage()
 {
 ?>
-    <div id="bar">
-        <h1>Benvenuto accedi con il tuo account</h1>
-    </div>
+        <header>
+        <div class="logo">Logo</div>
+        <nav class="navigation">
+            <a href="#">About</a>
+            <a href="#">Concat</a>
+        </nav>
+    </header>
 
     <div class="wrapper">
         <div class="form-box register">
