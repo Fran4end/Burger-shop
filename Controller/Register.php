@@ -11,7 +11,6 @@
 <?php
 
 require '../Models/Utente.php';
-require_once '../Models/pages.php';
 
 session_start();
 
@@ -37,17 +36,16 @@ if (
                 title: 'Oops...',
                 text: 'Il nome è già stato usato',
                 // footer: '<a href="">Why do I have this issue?</a>'
-            }).then(() => document.location = "./Register.php")
+            }).then(() => document.location = "../Views/Register/register.html")
         })
         </script>
 <?php
 
     }
 } else {
-
     $_SESSION['auth'] = false;
     session_destroy();
-    registerPage();
+    header('Location: ../Views/Register/register.html');
 }
 ?>
 

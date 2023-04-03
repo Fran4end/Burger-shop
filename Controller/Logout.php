@@ -1,4 +1,4 @@
 <?php
 
 session_destroy();
-loginPage();
+header('Location: ../Views/Login/LoginPage.html');

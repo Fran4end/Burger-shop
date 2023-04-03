@@ -1,7 +1,6 @@
 <?php
 
 require '../Models/Utente.php';
-require_once '../Models/pages.php';
 
 session_start();
 
@@ -23,6 +22,5 @@ if(isset($_REQUEST['name'])){
         header('Location: ../Views/Login/LoginPage.html');
     }
 }else{
-    // header('Location: ../Views/Login/LoginPage.html');
-    loginPage();
+    header('Location: ../Views/Login/LoginPage.html');
 }
