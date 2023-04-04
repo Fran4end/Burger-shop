@@ -45,7 +45,7 @@ if (
 } else {
     $_SESSION['auth'] = false;
     session_destroy();
-    header('Location: ../Views/Register/register.html');
+    header('Location: ../Views/Register/RegisterPage.html');
 }
 ?>
 
