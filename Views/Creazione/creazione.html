@@ -5,43 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../default.css">
     <link rel="stylesheet" href="creazione.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="creazione.js"></script>
     <title>Creazione</title>
 </head>
 
 <body onload="getHtml()">
-    <div id="banner">
-        <a href="/Burger-shop/Controller/Annulla.php"><i class="fa fa-home"></i></a>
-        <p>Componi il tuo panino</p>
-        <a href="/Burger-shop/Controller/Order.php"><i class="fa fa-shopping-cart"></i></a>
-    </div>
+
+    <header>
+        <div class="logo">
+            <a href="/Burger-shop/Controller/Annulla.php">
+                <img src="../logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav class="navigation">
+            <button class="btn-cart" title="cart" onclick="goToChekout()"><em class="fa fa-shopping-cart"></em></button>
+        </nav>
+    </header>
 
     <div id="products-selector">
         <div class="categories">PANE</div>
-        <div class="products"  id="pane">
-    
+        <div class="products" id="pane">
+
         </div>
-    
+
         <div class="categories">CARNE</div>
         <div class="products" id="carne">
-    
+
         </div>
-    
+
         <div class="categories">FORMAGGIO</div>
         <div class="products" id="formaggio">
-    
+
         </div>
-    
+
         <div class="categories">VERDURE</div>
         <div class="products" id="verdure">
-    
+
         </div>
-    
+
         <div class="categories">SALSE</div>
         <div class="products" id="salse">
-    
+
         </div>
     </div>
 </body>

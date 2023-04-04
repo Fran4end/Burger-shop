@@ -17,7 +17,7 @@ body {
     background-size: cover;
 }
 
-header{
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,7 +29,7 @@ header{
     z-index: 99;
 }
 
-.navigation a{
+.navigation a {
     position: relative;
     font-size: 1.1em;
     color: #fff;
@@ -38,7 +38,7 @@ header{
     margin-left: 40px;
 }
 
-.navigation a::after{
+.navigation a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -52,22 +52,39 @@ header{
     transition: transform .5s;
 }
 
-.navigation a:hover::after{
+.navigation a:hover::after {
     transform-origin: left;
     transform: scaleX(1);
 }
 
-.logo{
+.logo {
     font-size: 1em;
     user-select: none;
     justify-content: center;
     text-align: center;
     display: flex;
+
+}
+
+.logo img {
     height: 120px;
 }
 
+.navigation .btn-cart {
+    width: 70px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.8em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
 .wrapper {
-    position: relative;
     width: 400px;
     height: 440px;
     background: transparent;
@@ -78,12 +95,12 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px auto;
 }
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
-
 }
 
 .form-box h2 {
@@ -163,15 +180,4 @@ header{
 
 .login-register p a:hover {
     text-decoration: underline;
-}
-
-#bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    text-align: center;
-    justify-content: center;
-    background-color: #ffc21c;
 }

@@ -36,7 +36,7 @@ if (
                 title: 'Oops...',
                 text: 'Il nome è già stato usato',
                 // footer: '<a href="">Why do I have this issue?</a>'
-            }).then(() => document.location = "../Views/Register/register.html")
+            }).then(() => document.location = "../Views/Register/RegisterPage.html")
         })
         </script>
 <?php

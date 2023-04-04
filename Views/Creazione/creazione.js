@@ -3,47 +3,41 @@ let list = {};
 list['ingredients'] = {};
 
 //aggiunta dell'ingrediente al panino su richiesta dell'utente
-function getIngredients(ingrediente, prezzo, ammount, classe) {
-    if (list['ingredients'][ingrediente] == null && ammount == 1) {
-        list['ingredients'][ingrediente] = 1;
-        price += prezzo;
-        document.querySelector('#'+ingrediente).innerHTML+='<button id="number'+ingrediente+'">'+list["ingredients"][ingrediente]+'</button>';
-    } else if ((list['ingredients'][ingrediente] == 0 || list['ingredients'][ingrediente] == null) && ammount == -1) {
-        alert('Non ci sono ingredienti: ' + ingrediente);
-
+function getIngredients(ingrediente, prezzo, amount, classe) {
+    if ((list['ingredients'][ingrediente] == 0 || list['ingredients'][ingrediente] == null) && amount == -1) {
+        alert('Non ci sono ingredienti: ' + ingrediente.charAt(0).toUpperCase() + ingrediente.replaceAll("_", " ").slice(1));
     } else {
-        list['ingredients'][ingrediente] += ammount;
+        document.getElementById(ingrediente).removeChild(document.getElementById('number' + ingrediente))
+        list['ingredients'][ingrediente] = (list['ingredients'][ingrediente] == null && amount == 1) ? 1 : list['ingredients'][ingrediente] + amount;
         price += prezzo;
-        document.getElementById(ingrediente).removeChild(document.getElementById('number'+ingrediente));
-        document.querySelector('#'+ingrediente).innerHTML+='<button id="number'+ingrediente+'">'+list["ingredients"][ingrediente]+'</button>';
-        if(list['ingredients'][ingrediente]==0){
+        let button = document.createElement("button");
+        button.id = "number" + ingrediente;
+        button.innerHTML = list["ingredients"][ingrediente];
+        document.querySelector('#' + ingrediente).insertBefore(button, document.querySelector('#' + ingrediente).firstChild);
+        if (list['ingredients'][ingrediente] == 0) {
             delete list['ingredients'][ingrediente];
-            document.getElementById(ingrediente).removeChild(document.getElementById('number'+ingrediente));
-            console.log(list['ingredients']);
-        } 
+        }
     }
-    if(classe=='pane'){
-        let e = document.getElementsByClassName('pane');
-        console.log(e);
-        let i=-1;
-        if(ammount==1){
-            for(i=0; i<e.length;i++){
-                console.log(e[i].id);
-                if(!(e[i].id==('remove'+ingrediente))){
-                    e[i].disabled=true;
-                }
+    if (classe == 'pane') {
+        disableBreadButton(amount, ingrediente);
+    }
+}
+
+function disableBreadButton(amount, ingrediente) {
+    let e = document.getElementsByClassName('pane');
+    if (amount == 1) {
+        for (const element of e) {
+            if (element.id != ('remove' + ingrediente)) {
+                element.disabled = true;
             }
         }
-        if(ammount==-1){
-            for(i=0;i<e.length;i++){
-                console.log(e[i].id);
-                if(!(e[i].id==('remove'+ingrediente))){
-                    e[i].disabled=false;
-                }
+    } else {
+        for (const element of e) {
+            if (element.id != ('remove' + ingrediente)) {
+                element.disabled = false;
             }
         }
     }
-    console.log(list['ingredients']);
 }
 
 
@@ -75,9 +69,25 @@ function getHtml() {
 }
 
 function buildIngredients(name, price, image, classe) {
-    return '<div><div><img src=' + image + '></div><div><p id="name">' + name.charAt(0).toUpperCase() + name.replaceAll("_", " ").slice(1) + '</p><span id="'+name+'"><button id="remove'+name+'" class="'+classe+'" onclick="getIngredients(`'+name+'`,'+price+','+'-1'+',`'+classe+'`)" >-</button><button id="add'+name+'" class="'+classe+'" onclick="getIngredients(`'+name+'`,'+price+','+'1'+',`'+classe+'`)">+</button></span><p id="price"><span id="amount">' + price + '</span>€</p></div></div>';
+    return '<div class="wrapper">' +
+        '<div class="form-box">' +
+        '<h2>' + name.charAt(0).toUpperCase() + name.replaceAll("_", " ").slice(1) + '</h2>' +
+        '<img class="image input-box" src=' + image + '>' +
+        '<div class="input-box">' +
+        '<span class="icon" id="' + name + '">' +
+        '<button id="number' + name + '">0</button>' +
+        '<button id="remove' + name + '" class="' + classe + '" onclick="getIngredients(`' + name + '`,' + price + ',' + '-1' + ',`' + classe + '`)">-</button>' +
+        '<button id="add' + name + '" class="' + classe + '" onclick="getIngredients(`' + name + '`,' + price + ',' + '1' + ',`' + classe + '`)">+</button>' +
+        '</span>' +
+        '<p id="price">' +
+        '<label for="price" id="amount">' + price + ' € x 1</label></p>' +
+        '</div>' +
+        '</div>';
 }
 
+/**
+ * @Fran4end
+ */
 //Avvia un pop-up dove verrà chiesto il nome del panino e poi mandato alla pagina chekout
 function goToChekout() {
     Swal.fire({
@@ -89,6 +99,7 @@ function goToChekout() {
         showCancelButton: true,
         confirmButtonText: 'vai al checkout',
         showLoaderOnConfirm: true,
+        confirmButtonColor: '#ffc21c',
         preConfirm: (panino) => {
             //TODO: chiamare il file php per passare il json e andare al chekout
         },
