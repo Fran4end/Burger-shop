@@ -2,17 +2,11 @@
 
 // after creating the panino, this file is called and saves the panino into the SESSION, then redirects to the checkout  
 
-session_start();
+include 'logged.php';
 
+session_start();
 // if the user isn't logged redirects to login
-if(!isset($_SESSION['user'])){
-   ?>
-       <script>
-           if (!alert('biricchino, non sei loggato'))
-               document.location = 'Login.php';
-       </script>
-   <?php
-}
+checkLogin();
 
 // if a panino is passed, saves it in SESSION['order']
 if(isset($_REQUEST['panino']) && $_REQUEST['panino'] != ''){

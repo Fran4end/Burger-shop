@@ -5,18 +5,11 @@
 include '../Models/Panino.php';
 include '../Models/Ingrediente.php';
 include '../Models/Ordine.php';
+include 'logged.php';
 
 session_start();
-
 // if the user isn't logged redirects to login
-if(!isset($_SESSION['user'])){
-    ?>
-        <script>
-            if (!alert('biricchino, non sei loggato'))
-                document.location = 'Login.php';
-        </script>
-    <?php
-}
+checkLogin();
 
 if (isset($_SESSION['panino'])) {
     // decodes the json and clear the SESSION
