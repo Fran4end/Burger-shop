@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Performs the checkout when the 'Ordina' button is pressed and saves everything in the db
+ * Performs the checkout when the 'Ordina' button is pressed and saves everything in the db.
+ * 
+ * ERROR: Poiché sia Models/Ingrediente.php e Models/Ordine.php includono Models/Config.php si ha errore
  */
 
 include '../Models/Panino.php';
