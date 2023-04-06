@@ -1,6 +1,8 @@
 <?php
 
-// performs the checkout when the 'Ordina' button is pressed and saves everything in the db
+/**
+ * Performs the checkout when the 'Ordina' button is pressed and saves everything in the db
+ */
 
 include '../Models/Panino.php';
 include '../Models/Ingrediente.php';
@@ -11,6 +13,7 @@ session_start();
 // if the user isn't logged redirects to login
 checkLogin();
 
+// if the user ordered something
 if (isset($_SESSION['panino'])) {
     // decodes the json and clear the SESSION
     $json = json_decode($_SESSION['panino'], true);
@@ -66,7 +69,7 @@ if (isset($_SESSION['panino'])) {
         }
     }
     header('Location: ../Views/Home/home.html');
-} else {
+} else { //if the data of the order don't exist
     ?>
         <script>
             if (!alert('nessun parametro passato, ci scusiamo, ma i nostri programmatori sono sottopagati ;)'))
@@ -75,7 +78,12 @@ if (isset($_SESSION['panino'])) {
     <?php
 }
 
-
+/**
+ * Iterates an array of Ingredienti to obtain the id of the Ingredient by the name.
+ * 
+ * @param string $name the name of the Ingrediente to find
+ * @param array $all the array containing al the Ingredienti to iterate
+ */
 function getIngredientId($name, $all) {
     foreach ($all as $ing) {
         if ($ing['nome'] == $name) {

@@ -1,6 +1,8 @@
 <?php
 
-// redirects the user from the homepage to the creation of the panino
+/**
+ * Redirects the user from the homepage to the creation of the panino
+ */
 
 include 'logged.php';
 

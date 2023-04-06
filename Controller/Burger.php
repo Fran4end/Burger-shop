@@ -1,6 +1,8 @@
 <?php
 
-// after creating the panino, this file is called and saves the panino into the SESSION, then redirects to the checkout  
+/**
+ * After creating the panino, this file is called and saves the panino into the SESSION, then redirects to the checkout  
+ */
 
 include 'logged.php';
 

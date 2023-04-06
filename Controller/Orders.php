@@ -1,4 +1,5 @@
 <?php
+
 /**
  * If the user is logged, returns a json containing the orders and the panini of a User
  * @author ErosM04
@@ -40,8 +41,8 @@ if(isset($_SESSION['user'])){
  * Every order has: ``id``, ``prezzo``, ``panini``.
  * To create the array of panini, ``addPanini()`` the function is used. 
  *
- * @param array[] $order an array containing the data of a user
- * @return array[] an array containing all the Orders
+ * @param array $order an array containing the data of a user
+ * @return array an array containing all the Orders
  * @author ErosM04
  */
 function addOrder($order){
@@ -56,7 +57,7 @@ function addOrder($order){
  * Every panino has: ``id``, ``nome``, ``pronto``, ``prezzo``.
  *
  * @param int $id_order the id of the order
- * @return array[] an array containing all the Panini
+ * @return array an array containing all the Panini
  * @author ErosM04
  */
 function addPanini($id_order){
