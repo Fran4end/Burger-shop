@@ -1,6 +1,8 @@
 <?php
-
-// if the user is logged, returns a json containing the orders and the panini of a User
+/**
+ * If the user is logged, returns a json containing the orders and the panini of a User
+ * @author ErosM04
+ */
 
 include '../Models/Ordine.php';
 include '../Models/Panino.php';
@@ -40,6 +42,7 @@ if(isset($_SESSION['user'])){
  *
  * @param array[] $order an array containing the data of a user
  * @return array[] an array containing all the Orders
+ * @author ErosM04
  */
 function addOrder($order){
     $arr['id'] = $order['id'];
@@ -54,6 +57,7 @@ function addOrder($order){
  *
  * @param int $id_order the id of the order
  * @return array[] an array containing all the Panini
+ * @author ErosM04
  */
 function addPanini($id_order){
     $paninoObj = new Panino();
