@@ -34,6 +34,19 @@ class Panino
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getPaninoByOrder($id_ordine){
+        $stmt = $this->db->prepare(
+            "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pronto`, `panino`.`prezzo`
+            FROM `panino`
+            INNER JOIN `ordine` ON `panino`.`id_ordine` = `ordine`.`id`
+            WHERE `ordine`.`id` = ?");
+        $parms = [$id_ordine];
+        
+        $stmt->execute($parms);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function createBurger($id_ordine)
     {
         if ($this->prezzo == 0) {
