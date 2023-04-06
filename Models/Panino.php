@@ -34,6 +34,13 @@ class Panino
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Performs a query to the db and returns an array containing all the panini of a specific order. 
+     *
+     * @param int $id_order the id of the order
+     * @return array an array containing all the Panini
+     * @author ErosM04
+     */
     public function getPaninoByOrder($id_ordine){
         $stmt = $this->db->prepare(
             "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pronto`, `panino`.`prezzo`
