@@ -48,32 +48,43 @@
     </main>
     <script>
         function checkout() {
-            swal({
-                title: "Sei sicuro?",
-                text: "Una volta ordinato non potrai più tornare indietro!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
+            if (document.querySelectorAll('.disable-scrollbars ul').length != 0) {
+                swal({
+                    title: "Sei sicuro?",
+                    text: "Una volta ordinato non potrai più tornare indietro!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
                     if (willDelete) {
-                        swal("Wow! Il tuo ordine è stato completato con successo! :)", {
-                            icon: "success",
-                        }).then(() => {
-                            fetch('../../Controller/Checkout.php', {
-                                method: 'POST',
-                                body: prepareJson(),
-                            }).then((res) => res.json()).then((data) => {
-                                    console.log(data);
-                                    if (data.result) {
-                                        document.location = "../home/home.html";
-                                    } else {
-                                        console.log('errore');
-                                    }
+                        fetch('../../Controller/Checkout.php', {
+                            method: 'POST',
+                            body: prepareJson(),
+                        }).then((res) => res.json()).then((data) => {
+                            console.log(data);
+                            if (data.result) {
+                                swal("Wow! Il tuo ordine è stato completato con successo! :)", {
+                                    icon: "success",
+                                }).then((willDelete) => document.location = "../home/home.html");
+                            } else {
+                                swal({
+                                    title: "Oops...",
+                                    text: "Non hai abbastanza soldi per effettuare quest'ordine!",
+                                    icon: "error",
+                                    dangerMode: true,
                                 })
-                        });
+                            }
+                        })
                     }
                 })
+            } else {
+                swal({
+                    title: "Oops...",
+                    text: "Il tuo ordine è vuoto!",
+                    icon: "warning",
+                    dangerMode: true,
+                })
+            }
         }
     </script>
 </body>
