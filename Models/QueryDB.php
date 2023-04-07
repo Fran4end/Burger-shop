@@ -1,7 +1,7 @@
 <?php
 
 // use PDO;
-include 'Config.php';
+require_once 'Config.php';
 
 /**
  * Base model
