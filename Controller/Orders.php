@@ -5,8 +5,9 @@
  * @author ErosM04
  */
 
-include '../Models/Ordine.php';
-include '../Models/Panino.php';
+require_once '../Models/Ordine.php';
+require_once '../Models/Panino.php';
+require_once '../Models/Ingrediente.php';
 
 session_start();
 
@@ -73,8 +74,31 @@ function addPanini($id_order){
     $panini = $paninoObj->getPaninoByOrder($id_order);
     $arr = array();
 
+    // gets the ingredienti and add the panino to the array
     foreach($panini as $panino){
+        $panino['ingredienti'] = addIngredienti($id_order, $panino['id']);
         $arr[] = $panino;
+    }
+
+    return $arr;
+}
+
+/**
+ * Returns an array containing all the Ingredienti of a specific panino.
+ * Every ingrediente has: ``id``, ``prezzo``, ``immagine``,  ``nome``, ``categoria``.
+ *
+ * @param int $id_order the id of the order
+ * @param int $id_panino the id of the panino
+ * @return array an array containing all the Panini
+ * @author ErosM04
+ */
+function addIngredienti($id_order, $id_panino){
+    $ingredientObj = new Ingrediente();
+    $ingredienti = $ingredientObj->getIngredientiByPanino($id_order, $id_panino);
+    $arr = array();
+
+    foreach($ingredienti as $ingrediente){
+        $arr[] = $ingrediente;
     }
 
     return $arr;
