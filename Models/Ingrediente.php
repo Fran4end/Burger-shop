@@ -1,5 +1,5 @@
 <?php
-include 'QueryDB.php';
+require_once 'QueryDB.php';
 
 /**
  * TESTED 100%

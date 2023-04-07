@@ -1,7 +1,7 @@
 <?php
 use FFI\Exception;
 
-include 'QueryDB.php';
+require_once 'QueryDB.php';
 // use PDO;
 
 /**
