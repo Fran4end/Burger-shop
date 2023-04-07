@@ -100,10 +100,10 @@ function goToCheckout() {
             title: 'Scrivi il nome del panino',
             input: 'text',
             inputAttributes: {
-                autocapitalize: 'off'
+                autocapitalize: 'true'
             },
             showCancelButton: true,
-            confirmButtonText: 'vai al checkout',
+            confirmButtonText: 'Vai al checkout',
             showLoaderOnConfirm: true,
             confirmButtonColor: '#ffc21c',
             preConfirm: (nomePanino) => {
