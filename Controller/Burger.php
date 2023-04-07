@@ -1,20 +1,26 @@
 <?php
 session_start();
 /**
- * After creating the panino, this file is called and 
- * saves the panino into the SESSION, then redirects to the checkout  
+ * After creating the panino in the View, this file is called and 
+ * saves the panino into the SESSION, then tells the js to redirect the user
+ * to the login.
+ * @author ErosM04, Fran4end, TmsRvl
  */
 
-$burger = json_decode(file_get_contents('php://input'), true);
-
-// if a panino is passed, saves it in SESSION['order']
-
-// if the user isn't logged redirects to login
-
+// if the user isn't logged tells the js to redirect the user to the login
 if (!isset($_SESSION['user'])) {
    echo json_encode(["result" => false]);
 } else {
-   // if the order field in SESSION already exists, add the new panino, otherwise creates the order in the SESSION
+   // reads the json sent by the user 
+   $burger = json_decode(file_get_contents('php://input'), true);
+
+   // checks if the json file containing the new panino sent by the user exist
+   if(empty($burger)){
+      echo json_encode(["result" => false]);
+      exit;
+   }
+
+   // if the order field in SESSION already exists, adds the new panino, otherwise creates the order in the SESSION
    if (isset($_SESSION['order'])) {
       $order = json_decode($_SESSION['order'], true);
       $order[] = $burger;
