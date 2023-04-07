@@ -60,9 +60,18 @@
                         swal("Wow! Il tuo ordine è stato completato con successo! :)", {
                             icon: "success",
                         }).then(() => {
-                            window.location = '../../Controller/Order.php';
-                            //ricordarsi di passare post con il json
-                        });;
+                            fetch('../../Controller/Checkout.php', {
+                                method: 'POST',
+                                body: prepareJson(),
+                            }).then((data) => {
+                                    console.log(data);
+                                    if (data.ok) {
+                                        document.location = "../home/home.html";
+                                    } else {
+                                        console.log('errore');
+                                    }
+                                })
+                        });
                     }
                 })
         }

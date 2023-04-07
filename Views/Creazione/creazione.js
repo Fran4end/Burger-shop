@@ -109,7 +109,7 @@ function goToCheckout() {
             preConfirm: (nomePanino) => {
                 fetch('../../Controller/Burger.php', {
                     method: 'POST',
-                    body: JSON.stringify(prepareJSON(nomePanino)),
+                    body: prepareJSON(nomePanino),
                 })
                     .then((res) => res.json())
                     .then((data) => {
@@ -150,7 +150,7 @@ function prepareJSON(name) {
             out.ingredienti.push({ "nome": key, "quantità": burger["ingredients"][key] });
         }
     }
-    return out;
+    return JSON.stringify(out);
 }
 
 function findBread() {

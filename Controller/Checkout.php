@@ -4,10 +4,10 @@
  * Performs the checkout when the 'Ordina' button is pressed and saves everything in the db.
  */
 
-include '../Models/Panino.php';
-include '../Models/Ingrediente.php';
-include '../Models/Ordine.php';
-include 'logged.php';
+require_once '../Models/Panino.php';
+require_once '../Models/Ingrediente.php';
+require_once '../Models/Ordine.php';
+require_once '../Models/Utente.php';
 
 session_start();
 // if the user isn't logged redirects to login
@@ -21,8 +21,8 @@ if (!isset($_SESSION['user'])) {
         
         // gets the User form the db
         $user = new Utente('a', 'a');  //lazy initialization
-        $user_id = $_SESSION['user']['User_ID'];
-        $user->getUtenteById($user_id);
+        $user_id = json_decode($_SESSION['user'], true)['User_ID'];
+        $user->getUtenteById((int) $user_id);
 
         // creates the Ordine
         $order = new Ordine();

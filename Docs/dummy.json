@@ -1,6 +1,7 @@
 [
     {
         "nome": "Classic",
+        "quantità": 2,
         "prezzo": 10,
         "pane": "pane_bianco",
         "ingredienti":[

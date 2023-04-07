@@ -2,17 +2,17 @@ let json;
 
 window.onload = function () {
     fetch('../../Controller/Order.php')
-    .then((res) => res.json())
-    .then((data) => {
-        json = data;
-    }).then(() => fillBody());
+        .then((res) => res.json())
+        .then((data) => {
+            json = data;
+        }).then(() => fillBody());
 }
 
 function fillBody() {
     let totalPrice = 0;
     json.forEach(element => {
         totalPrice += parseFloat(element.prezzo);
-        document.querySelector('.disable-scrollbars').innerHTML += '<ul><li><img src="img/hamburger.png"></li><span><li>' + element.nome + 
+        document.querySelector('.disable-scrollbars').innerHTML += '<ul><li><img src="img/hamburger.png"></li><span><li>' + element.nome +
             '</li><li><span id="price">' + element.prezzo + '</span> €</li></span><span><span><li><button id="delete-button"><ion-icon name="trash-outline"></ion-icon></button></li></span><li><select name="" id=""><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></li></span></ul>'
     });
 
@@ -55,7 +55,19 @@ function deleteBurger() {
             if (document.querySelectorAll('.disable-scrollbars ul').length == 0) {
                 document.querySelector('.disable-scrollbars').innerHTML = '<p id="empty-checkout"><ion-icon name="close-circle-outline"></ion-icon> Nessun panino inserito</p>'
             }
-            fetch('../../Controller/DeleteBurger.php?nome='+nome+'&prezzo='+prezzo).then(() => location.reload());
+            fetch('../../Controller/DeleteBurger.php?nome=' + nome + '&prezzo=' + prezzo).then(() => location.reload());
         });
     });
+}
+
+function prepareJson() {
+    let out = [];
+
+    document.querySelectorAll('.disable-scrollbars ul').forEach((element, i) => {
+        var buff = json[i];
+        buff["quantità"] = element.querySelector('select').value;
+        out.push(buff);
+    });
+
+    return JSON.stringify(out);
 }
