@@ -25,7 +25,7 @@ if(isset($_SESSION['user']) && isset($_SESSION['order']) && isset($_GET['nome'])
         $orderJson[] = $panino;
     }
 
-    // if there are no orders left returns delete the order, otherwise update the order in the SESSION
+    // if there are no orders left returns delete the order, otherwise updates the order in the SESSION
     if(empty($orderJson)){
         unset($_SESSION['order']);
     }else{
