@@ -4,7 +4,11 @@ burger['ingredients'] = [];
 
 function getIngredients(ingrediente, prezzo, amount, classe) {
     if ((burger['ingredients'][ingrediente] == 0 || burger['ingredients'][ingrediente] == null) && amount == -1) {
-        alert('Non ci sono ingredienti: ' + ingrediente.charAt(0).toUpperCase() + ingrediente.replaceAll("_", " ").slice(1));
+        Swal.fire({
+            icon: 'error',
+            title: 'Attenzione',
+            text: 'Non ci sono ingredienti',
+        })
     } else {
         document.getElementById(ingrediente).removeChild(document.getElementById('number' + ingrediente))
         burger['ingredients'][ingrediente] = (burger['ingredients'][ingrediente] == null && amount == 1) ? 1 : burger['ingredients'][ingrediente] + amount;
@@ -91,29 +95,36 @@ function buildIngredients(name, price, image, classe) {
  */
 //Avvia un pop-up dove verrà chiesto il nome del panino e poi mandato alla pagina chekout
 function goToChekout() {
-    Swal.fire({
-        title: 'Scrivi il nome del panino',
-        input: 'text',
-        inputAttributes: {
-            autocapitalize: 'off'
-        },
-        showCancelButton: true,
-        confirmButtonText: 'vai al checkout',
-        showLoaderOnConfirm: true,
-        confirmButtonColor: '#ffc21c',
-        preConfirm: (nomePanino) => {
-            fetch('../../Controller/Burger.php', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(prepareJSON(nomePanino)),
-            })
-
-        },
-        allowOutsideClick: () => !Swal.isLoading()
-    })
+    if(findBread() != null){
+        Swal.fire({
+            title: 'Scrivi il nome del panino',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'vai al checkout',
+            showLoaderOnConfirm: true,
+            confirmButtonColor: '#ffc21c',
+            preConfirm: (nomePanino) => {
+                fetch('../../Controller/Burger.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(prepareJSON(nomePanino)),
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        })
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Devi ancora selezionare il pane!',
+        })
+    }
 }
 
 function prepareJSON(name) {
