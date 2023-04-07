@@ -1,4 +1,4 @@
-var price = 0;
+let price = 0;
 let burger = {};
 burger['ingredients'] = [];
 
@@ -18,7 +18,7 @@ function getIngredients(ingrediente, prezzo, amount, classe) {
         button.innerHTML = burger["ingredients"][ingrediente];
         document.querySelector('#' + ingrediente).insertBefore(button, document.querySelector('#' + ingrediente).firstChild);
         if (burger['ingredients'][ingrediente] == 0) {
-            delete burger['ingredients'][ingrediente];
+            burger['ingredients'].splice(burger['ingredients'].indexOf(ingrediente), 1);
         }
     }
     if (classe == 'pane') {
@@ -94,8 +94,8 @@ function buildIngredients(name, price, image, classe) {
  * @Fran4end
  */
 //Avvia un pop-up dove verrà chiesto il nome del panino e poi mandato alla pagina chekout
-function goToChekout() {
-    if(findBread() != null){
+function goToCheckout() {
+    if (findBread() != null) {
         Swal.fire({
             title: 'Scrivi il nome del panino',
             input: 'text',
@@ -109,16 +109,27 @@ function goToChekout() {
             preConfirm: (nomePanino) => {
                 fetch('../../Controller/Burger.php', {
                     method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
                     body: JSON.stringify(prepareJSON(nomePanino)),
                 })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.result) {
+                            document.location = "../checkout/checkout.html";
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Biricchino non sei ancora loggato!',
+                            }).then(() => {
+                                document.location = "../Login/LoginPage.html";
+                            })
+                        }
+                    })
+
             },
             allowOutsideClick: () => !Swal.isLoading()
         })
-    }else{
+    } else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -128,7 +139,7 @@ function goToChekout() {
 }
 
 function prepareJSON(name) {
-    var out = {
+    let out = {
         "nome": name,
         "prezzo": price,
         "pane": findBread(),
