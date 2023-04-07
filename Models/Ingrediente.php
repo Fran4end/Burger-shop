@@ -46,6 +46,21 @@ class Ingrediente
         return $res;
     }
 
+    public function getIngredientiByPanino($id_ordine, $id_panino){
+        $stmt = $this->db->prepare(
+            "SELECT `ingrediente`.*
+            FROM `preparazione`
+            INNER JOIN `ordine` ON `ordine`.`id` = `preparazione`.`id_ordine`
+            INNER JOIN `panino` ON `panino`.`id` = `preparazione`.`id_panino`
+            INNER JOIN `ingrediente` ON `ingrediente`.`id` = `preparazione`.`id_ingrediente`
+            WHERE `ordine`.`id` = ? AND `panino`.`id` = ?");
+        $parms = [$id_ordine, $id_panino];
+        
+        $stmt->execute($parms);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getId()
     {
         return $this->id;
