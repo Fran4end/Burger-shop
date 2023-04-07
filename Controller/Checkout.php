@@ -14,7 +14,7 @@ session_start();
 checkLogin();
 
 // if the user correctly sent the json containing the panini
-if (empty(json_decode(file_get_contents('php://input'), true))) {
+if (!empty(json_decode(file_get_contents('php://input'), true))) {
     // decodes the json and clear the SESSION
     $json = json_decode(file_get_contents('php://input'), true);
     
