@@ -1,9 +1,17 @@
 var json = '{"hamburgers": [{"name": "Classic","price": 6.99,"ingredients": ["bun","beef patty","lettuce","tomato","sauce","cheese"]},{"name": "Double Cheeseburger","price": 6.99,"ingredients": ["bun","beef patty","lettuce","tomato","sauce","cheese"]},{"name": "Cheeseburger","price": 7.99,"ingredients": ["bun","beef patty","lettuce","tomato","sauce","cheddar cheese"]},{"name": "Bacon Burger","price": 8.99,"ingredients": ["bun","beef patty","lettuce","tomato","sauce","cheese","bacon"]},{"name": "Veggie Burger","price": 6.99,"ingredients": ["whole wheat bun","soy patty","lettuce","tomato","sauce","vegan cheese"]}]}';
 
+document.onload(()=>{
+    fetch('../../Controller/Order.php')
+    .then(data=>{
+        json = JSON.parse(data);
+    })
+})
+    
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    var obj = JSON.parse(json);
     var totalPrice = 0;
-    obj.hamburgers.forEach(element => {
+    json.hamburgers.forEach(element => {
         totalPrice += element.price;
         document.querySelector('.disable-scrollbars').innerHTML += '<ul><li><img src="img/hamburger.png"></li><span><li>' + element.name + '</li><li><span id="price">' + element.price + '</span> €</li></span><span><span><li><button id="edit-button"><span class="material-symbols-rounded">edit</span></button></li><li><button id="delete-button"><ion-icon name="trash-outline"></ion-icon></button></li></span><li><select name="" id=""><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></li></span></ul>'
     });
@@ -12,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.disable-scrollbars ul').forEach((element, i) => {
         element.querySelector('select').addEventListener('change', () => {
-            element.querySelector('#price').innerHTML = (obj.hamburgers[i].price * element.querySelector('select').value).toFixed(2);
+            element.querySelector('#price').innerHTML = (json.hamburgers[i].price * element.querySelector('select').value).toFixed(2);
             document.querySelector('#total-price').innerHTML = totalPrices();
         });
     });

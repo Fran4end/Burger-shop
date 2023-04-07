@@ -102,6 +102,12 @@ function goToChekout() {
         confirmButtonColor: '#ffc21c',
         preConfirm: (panino) => {
             //TODO: chiamare il file php per passare il json e andare al chekout
+            fetch('../../Controller/Burger.php',{
+                method: 'POST',
+                body: JSON.stringify(panino),
+                headers: {"Content-type": "application/json;charset=UTF-8"}
+            })
+            
         },
         allowOutsideClick: () => !Swal.isLoading()
     })

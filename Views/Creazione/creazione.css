@@ -21,6 +21,7 @@
 .wrapper{
     width: 450px;
     height: 400px;
+    background-color: #505050;
 }
 
 .form-box .image{
@@ -56,4 +57,7 @@
     padding: 11px;
     border-radius: 10px 10px 0px 0px;
     color: var(--primary-color);
+}
+body{
+    background: none;
 }

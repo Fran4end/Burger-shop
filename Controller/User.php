@@ -1,6 +1,8 @@
 <?php
 
-// returns a json containg the data of the user, if he is logged
+/**
+ * Returns a json containg the data of the user, if he is logged
+ */
 
 session_start();
 

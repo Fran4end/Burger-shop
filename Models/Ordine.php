@@ -1,6 +1,7 @@
 <?php
 use FFI\Exception;
 
+include 'QueryDB.php';
 // use PDO;
 
 /**
@@ -27,6 +28,22 @@ class Ordine
     public function getAll()
     {
         $stmt = $this->db->query('SELECT * FROM ordine');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Performs a query to the db and returns an array containing all the orders of a specific user. 
+     *
+     * @param int $id_utente the id of the user
+     * @return array an array containing all the Ordini
+     * @author ErosM04
+     */
+    public function getOrdersByUser($id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM `ordine` WHERE `id_utente` = ?");
+        $parms = [$id_utente];
+        
+        $stmt->execute($parms);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

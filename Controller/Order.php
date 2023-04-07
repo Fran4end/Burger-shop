@@ -1,6 +1,8 @@
 <?php
 
-// returns all the panini saved in the current SESSION, if the user is logged
+/**
+ * Returns a json containing all the panini saved in the current SESSION (actual order), if the user is logged
+ */
 
 session_start();
 
