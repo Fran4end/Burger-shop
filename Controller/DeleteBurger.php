@@ -10,7 +10,6 @@ session_start();
 if(isset($_SESSION['user']) && isset($_SESSION['order']) && isset($_GET['nome']) && isset($_GET['prezzo'])){
     
     $order = json_decode($_SESSION['order'], true);
-    // print_r($order);
 
     foreach($order as $key => $panino){
         if($panino['nome'] == $_GET['nome'] && $panino['prezzo'] == $_GET['prezzo']){

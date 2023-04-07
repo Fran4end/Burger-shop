@@ -1,15 +1,18 @@
 <?php
 header("content-type: application/json");
+
 function setCk($name, $value)
 {
     setcookie($name, $value, time() + (60 * 60 * 24 * 90));
 }
+
 function delateCk($name)
 {
     if ($_COOKIE[$name] != null) {
         unset($_COOKIE[$name]);
     }
 }
+
 function getCk($name)
 {
     if (isset($_COOKIE[$name])) {

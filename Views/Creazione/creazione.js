@@ -141,7 +141,7 @@ function goToCheckout() {
 function prepareJSON(name) {
     let out = {
         "nome": name,
-        "prezzo": price,
+        "prezzo": price.toFixed(2),
         "pane": findBread(),
         "ingredienti": []
     };

@@ -196,14 +196,3 @@ button{
     margin-right: 8px;
 }
 
-#scroll-indicator{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 720px;
-}
-
-#scroll-indicator ion-icon{
-    width: 24px;
-    height: 24px;
-}
