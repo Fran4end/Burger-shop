@@ -44,15 +44,15 @@ class Utente
         $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `nome` = ?');
         $parms = [$name];
         $stmt->execute($parms);
-        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
         if (empty($res)) {
             return $res;
         }
-        $this->id = $res[0]['id'];
-        $this->nome = $res[0]['nome'];
-        $this->password = $res[0]['password'];
-        $this->saldo = $res[0]['saldo'];
-        $this->avatar = $res[0]['avatar'];
+        $this->id = $res['id'];
+        $this->nome = $res['nome'];
+        $this->password = $res['password'];
+        $this->saldo = $res['saldo'];
+        $this->avatar = $res['avatar'];
         return $this;
     }
 
@@ -61,7 +61,7 @@ class Utente
         $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `id` = ?');
         $parms = [$id];
         $stmt->execute($parms);
-        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
         $this->id = $res['id'];
         $this->nome = $res['nome'];
         $this->password = $res['password'];
@@ -75,9 +75,9 @@ class Utente
         $stmt = $this->db->prepare('SELECT `saldo` FROM `utente` WHERE `id` = ?');
         $parms = [$id];
         $stmt->execute($parms);
-        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
         $stmt = $this->db->prepare("UPDATE `utente` SET `saldo`= ? WHERE `id` = ?");
-        $parms = [$res + $saldo, $id];
+        $parms = [$res['saldo'] + $saldo, $id];
         $stmt->execute($parms);
     }
 

@@ -63,9 +63,9 @@
                             fetch('../../Controller/Checkout.php', {
                                 method: 'POST',
                                 body: prepareJson(),
-                            }).then((data) => {
+                            }).then((res) => res.json()).then((data) => {
                                     console.log(data);
-                                    if (data.ok) {
+                                    if (data.result) {
                                         document.location = "../home/home.html";
                                     } else {
                                         console.log('errore');

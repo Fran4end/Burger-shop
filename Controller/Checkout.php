@@ -33,20 +33,15 @@ if (!isset($_SESSION['user'])) {
 
         // if the user hasn't enough 'schei' the server doesn't do anything
         if ($amount > $user->getSaldo()) {
-            ?>
-                <script>
-                    if (!alert('no schei'))
-                        document.location = 'Annulla.php';
-                </script>
-            <?php
-            header('Location: ../Views/Home/home.html');
-            return;
+            echo json_encode(["result" => false]);
+            exit;
         } else { // otherwise decrement the salt (doesn't affect db)
             $user->updateSaldo(-$amount, $user_id);
         }
 
         $order->setPrezzo($amount);
         $order_id = $order->createOrder($user_id);
+        $order->setPagato($order_id);
 
         //creates the Panini
         $ingrediente = new Ingrediente();
