@@ -18,7 +18,7 @@ function getIngredients(ingrediente, prezzo, amount, classe) {
         button.innerHTML = burger["ingredients"][ingrediente];
         document.querySelector('#' + ingrediente).insertBefore(button, document.querySelector('#' + ingrediente).firstChild);
         if (burger['ingredients'][ingrediente] == 0) {
-            burger['ingredients'].splice(burger['ingredients'].indexOf(ingrediente), 1);
+            delete burger['ingredients'][ingrediente];
         }
     }
     if (classe == 'pane') {
