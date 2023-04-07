@@ -24,7 +24,6 @@ if (
     if (empty($user->getUtenteByName($_REQUEST['name']))) {
         $user->createUtente();
         print_r($user->toJSON());
-        $_SESSION['auth'] = true;
         $_SESSION['user'] = $user->toJSON();
         header('Location: ../Views/Home/home.html');
     } else {
@@ -43,7 +42,6 @@ if (
 
     }
 } else {
-    $_SESSION['auth'] = false;
     session_destroy();
     header('Location: ../Views/Register/RegisterPage.html');
 }
