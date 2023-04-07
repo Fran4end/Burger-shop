@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+:root {
+    --darkreader-neutral-background: #202120;
+    --darkreader-neutral-text: #d9d2c6;
+    --darkreader-selection-background: #1a5397;
+    --darkreader-selection-text: #e9e2d7;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +22,7 @@ body {
     background: url('Login_3.jpg') no-repeat;
     background-position: center;
     background-size: cover;
+    overflow: auto;
 }
 
 header {
@@ -26,7 +34,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 99;
+    z-index: 98;
 }
 
 .navigation a {
@@ -180,4 +188,54 @@ header {
 
 .login-register p a:hover {
     text-decoration: underline;
+}
+
+.cookie-banner__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.cookie-banner {
+    position: fixed;
+    width: 60%;
+    height: auto;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #212529;
+}
+.cookie-banner__message {
+    margin-right: 20px;
+    flex: 1 0 0;
+}
+.cookie-banner__button {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cookie-banner__button .btn{
+    width: 170px;
 }

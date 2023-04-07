@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../default.css">
+    <script src="../cookie/cookie.js"></script>
     <title>Register</title>
 </head>
 
@@ -18,6 +19,17 @@
             <a href="#">Contact</a>
         </nav>
     </header>
+
+    <div class="cookie-banner">
+        <p class="cookie-banner__message">We use cookies to personalize content and ads, to provide social media
+            features and to analyze our traffic. We also share information about your use of our site with our
+            social media, advertising and analytics partners. By continuing to use our site, you consent to our use
+            of cookies. </p>
+        <form method="post" action="../../Controller/cookie.php" class="cookie-banner__button">
+            <button class="btn" name="accept" value="accept" type="submit">Accetta</button>
+            <button class="btn" name="accept" value="not" type="submit">Non accetta</button>
+        </form>
+    </div>
 
     <div class="wrapper">
         <div class="form-box register">
@@ -35,8 +47,9 @@
                 </div>
                 <input type="submit" class="btn" value="Register">
                 <div class="login-register">
-                    <p>Hai gia un account? 
-                    <a href="../../Controller/Login.php">Accedi</a></p>
+                    <p>Hai gia un account?
+                        <a href="../../Controller/Login.php">Accedi</a>
+                    </p>
                 </div>
             </form>
         </div>
