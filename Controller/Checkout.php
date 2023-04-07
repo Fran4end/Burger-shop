@@ -13,12 +13,11 @@ session_start();
 // if the user isn't logged redirects to login
 checkLogin();
 
-// if the user ordered something
-if (isset($_SESSION['panino'])) {
+// if the user correctly sent the json containing the panini
+if (empty(json_decode(file_get_contents('php://input'), true))) {
     // decodes the json and clear the SESSION
-    $json = json_decode($_SESSION['panino'], true);
-    unset($_SESSION['panino']);
-
+    $json = json_decode(file_get_contents('php://input'), true);
+    
     // gets the User form the db
     $user = new Utente('a', 'a');  //lazy initialization
     $user_id = $_SESSION['user']['User_ID'];
@@ -28,7 +27,7 @@ if (isset($_SESSION['panino'])) {
     $order = new Ordine();
     $amount = 0;
     foreach ($json as $value) {
-        $amount += $value['prezzo'];
+        $amount += $value['prezzo'] * $value['quantità'];
     }
 
     // if the user hasn't enough 'schei' the server doesn't do anything
@@ -54,21 +53,26 @@ if (isset($_SESSION['panino'])) {
 
     $panino = new Panino();
 
-    foreach ($json as $value) {
-        $panino->setNome($value['nome']);
-        $panino->setPrezzo($value['prezzo']);
-        $panino->createBurger($order_id);
+    foreach ($json as $burger) {
+        // creates the same Panino (and all the Preparazioni) for panino['quantità'] times 
+        for ($i = 0; $i < $burger['quantità']; $i++) {
 
-        // creates all the Preparazioni
-        foreach ($value['ingredienti'] as $ing) {
-            $panino->addIngrediente(
-                getIngredientId($ing['nome'], $all_ingredients),
-                $order_id,
-                $ing['quantità']
-            );
+            $panino->setNome($burger['nome']);
+            $panino->setPrezzo($burger['prezzo']);
+            $panino->createBurger($order_id);
+
+            // creates all the Preparazioni
+            foreach ($burger['ingredienti'] as $ing) {
+                $panino->addIngrediente(
+                    getIngredientId($ing['nome'], $all_ingredients),
+                    $order_id,
+                    $ing['quantità'],
+                );
+            }
         }
     }
 
+    // deletes the order in the SESSION and redirects to home
     unset($_SESSION['order']);
     header('Location: ../Views/Home/home.html');
 } else { //if the data of the order don't exist
