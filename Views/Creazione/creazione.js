@@ -1,27 +1,28 @@
 var price = 0;
-let list = {};
-list['ingredients'] = {};
+let burger = {};
+burger['ingredients'] = [];
 
-//aggiunta dell'ingrediente al panino su richiesta dell'utente
 function getIngredients(ingrediente, prezzo, amount, classe) {
-    if ((list['ingredients'][ingrediente] == 0 || list['ingredients'][ingrediente] == null) && amount == -1) {
+    if ((burger['ingredients'][ingrediente] == 0 || burger['ingredients'][ingrediente] == null) && amount == -1) {
         alert('Non ci sono ingredienti: ' + ingrediente.charAt(0).toUpperCase() + ingrediente.replaceAll("_", " ").slice(1));
     } else {
         document.getElementById(ingrediente).removeChild(document.getElementById('number' + ingrediente))
-        list['ingredients'][ingrediente] = (list['ingredients'][ingrediente] == null && amount == 1) ? 1 : list['ingredients'][ingrediente] + amount;
+        burger['ingredients'][ingrediente] = (burger['ingredients'][ingrediente] == null && amount == 1) ? 1 : burger['ingredients'][ingrediente] + amount;
         price += prezzo;
         let button = document.createElement("button");
         button.id = "number" + ingrediente;
-        button.innerHTML = list["ingredients"][ingrediente];
+        button.innerHTML = burger["ingredients"][ingrediente];
         document.querySelector('#' + ingrediente).insertBefore(button, document.querySelector('#' + ingrediente).firstChild);
-        if (list['ingredients'][ingrediente] == 0) {
-            delete list['ingredients'][ingrediente];
+        if (burger['ingredients'][ingrediente] == 0) {
+            delete burger['ingredients'][ingrediente];
         }
     }
     if (classe == 'pane') {
         disableBreadButton(amount, ingrediente);
     }
+    console.log(burger);
 }
+
 
 function disableBreadButton(amount, ingrediente) {
     let e = document.getElementsByClassName('pane');
@@ -42,17 +43,17 @@ function disableBreadButton(amount, ingrediente) {
 
 
 function getBack() {
-    list = [];
+    burger = [];
 }
 
 //Json contenente ordine effettuato dall'utente
 function buildJson() {
     let text = document.querySelector('input').value;
-    list['prezzo'] = price;
-    list['nome'] = text;
-    console.log(list);
-    console.log(JSON.stringify(list));
-    return JSON.stringify(list);
+    burger['prezzo'] = price;
+    burger['nome'] = text;
+    console.log(burger);
+    console.log(JSON.stringify(burger));
+    return JSON.stringify(burger);
 }
 
 
@@ -100,15 +101,41 @@ function goToChekout() {
         confirmButtonText: 'vai al checkout',
         showLoaderOnConfirm: true,
         confirmButtonColor: '#ffc21c',
-        preConfirm: (panino) => {
-            //TODO: chiamare il file php per passare il json e andare al chekout
-            fetch('../../Controller/Burger.php',{
+        preConfirm: (nomePanino) => {
+            fetch('../../Controller/Burger.php', {
                 method: 'POST',
-                body: JSON.stringify(panino),
-                headers: {"Content-type": "application/json;charset=UTF-8"}
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(prepareJSON(nomePanino)),
             })
-            
+
         },
         allowOutsideClick: () => !Swal.isLoading()
     })
+}
+
+function prepareJSON(name) {
+    var out = {
+        "nome": name,
+        "prezzo": price,
+        "pane": findBread(),
+        "ingredienti": []
+    };
+    for (const key in burger["ingredients"]) {
+        if (key != findBread()) {
+            out.ingredienti.push({ "nome": key, "quantità": burger["ingredients"][key] });
+        }
+    }
+    return out;
+}
+
+function findBread() {
+    for (const key in burger["ingredients"]) {
+        if (key.includes('pane')) {
+            return key;
+        }
+    }
+    return null;
 }
