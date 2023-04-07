@@ -1,10 +1,11 @@
 <?php
 
 /**
- * If the user is logged, returns a json containing the orders and the panini of a User
+ * If the user is logged, returns a json containing the orders, the panini and the ingredienti of a User
  * @author ErosM04
  */
 
+require_once '../Models/Utente.php';
 require_once '../Models/Ordine.php';
 require_once '../Models/Panino.php';
 require_once '../Models/Ingrediente.php';
@@ -13,10 +14,14 @@ session_start();
 
 if(isset($_SESSION['user'])){
 
+    // updates user data in the SESSION
+    $userObj = new Utente('a', 'a');
+    $userObj->getUtenteById(json_decode($_SESSION['user'], true)['User_ID']);
+    $_SESSION['user'] = $userObj->toJSON();
+
     //gets all the orders based on the user id
     $orderObj = new Ordine();
-    $user = json_decode($_SESSION['user'], true);
-    $orders = $orderObj->getOrdersByUser($user['User_ID']);
+    $orders = $orderObj->getOrdersByUser($userObj->getId());
 
     // if the user has no orders, returns an empty json
     if(empty($orders)){
@@ -26,17 +31,17 @@ if(isset($_SESSION['user'])){
         exit;
     }
 
-    // creates all the orders, based on the category
-    $ordersJson;
+    // creates all the orders, based on the category (and adds the schei)
+    $ordersJson['saldo'] = $userObj->getSaldo();
     foreach($orders as $order){
         if($order['pagato'] && $order['consegnato']){
-            $ordersJson['completati'][] = addOrder($order);
+            $ordersJson['ordini']['completati'][] = addOrder($order);
         }else if($order['pagato']){
-            $ordersJson['pagati'][] = addOrder($order);
+            $ordersJson['ordini']['pagati'][] = addOrder($order);
         }else if($order['consegnato']){
-            $ordersJson['consegnati'][] = addOrder($order);
+            $ordersJson['ordini']['consegnati'][] = addOrder($order);
         }else{
-            $ordersJson['ordinati'][] = addOrder($order);
+            $ordersJson['ordini']['ordinati'][] = addOrder($order);
         }
     }
 
