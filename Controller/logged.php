@@ -14,5 +14,8 @@ function checkLogin(){
                     document.location = 'Login.php';
             </script>
         <?php
+        return false;
+    }else{
+        return true;
     }
 }
