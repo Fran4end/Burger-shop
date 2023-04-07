@@ -17,6 +17,14 @@ if(isset($_SESSION['user'])){
     $user = json_decode($_SESSION['user'], true);
     $orders = $orderObj->getOrdersByUser($user['User_ID']);
 
+    // if the user has no orders, returns an empty json
+    if(empty($orders)){
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        echo json_encode($orders);
+        exit;
+    }
+
     // creates all the orders, based on the category
     $ordersJson;
     foreach($orders as $order){
