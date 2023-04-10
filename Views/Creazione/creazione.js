@@ -24,7 +24,6 @@ function getIngredients(ingrediente, prezzo, amount, classe) {
     if (classe == 'pane') {
         disableBreadButton(amount, ingrediente);
     }
-    console.log(burger);
 }
 
 
@@ -55,8 +54,6 @@ function buildJson() {
     let text = document.querySelector('input').value;
     burger['prezzo'] = price;
     burger['nome'] = text;
-    console.log(burger);
-    console.log(JSON.stringify(burger));
     return JSON.stringify(burger);
 }
 
@@ -66,7 +63,6 @@ function getHtml() {
     fetch('../../Controller/Ingredients.php')
         .then((res) => res.json())
         .then(data => {
-            console.log(data);
             data.forEach(element => {
                 document.querySelector('#' + element.categoria).innerHTML += buildIngredients(element.nome, element.prezzo.toFixed(2), element.immagine, element.categoria);
             });
@@ -100,7 +96,17 @@ function goToCheckout() {
             title: 'Scrivi il nome del panino',
             input: 'text',
             inputAttributes: {
-                autocapitalize: 'true'
+                autocapitalize: 'true',
+            },
+            inputPlaceholder: 'Nome',
+            inputValidator: (value) => {
+                return new Promise((resolve) => {
+                    if (value.trim() != '') {
+                        resolve()
+                    } else {
+                        resolve('Devi scrivere un nome :)')
+                    }
+                })
             },
             showCancelButton: true,
             confirmButtonText: 'Vai al checkout',
