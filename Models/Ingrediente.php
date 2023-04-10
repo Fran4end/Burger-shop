@@ -48,7 +48,7 @@ class Ingrediente
 
     public function getIngredientiByPanino($id_ordine, $id_panino){
         $stmt = $this->db->prepare(
-            "SELECT `ingrediente`.*
+            "SELECT `ingrediente`.*, `preparazione`.`quantità`
             FROM `preparazione`
             INNER JOIN `ordine` ON `ordine`.`id` = `preparazione`.`id_ordine`
             INNER JOIN `panino` ON `panino`.`id` = `preparazione`.`id_panino`
