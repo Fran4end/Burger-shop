@@ -9,5 +9,15 @@
     "not firefox <= 111",
     "not ios_saf <= 16.3",
     "not safari <= 16.3"
-  ]
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scrollbar-width"
+        ]
+      }
+    ]
+  }
 }

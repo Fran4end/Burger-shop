@@ -2,11 +2,11 @@
 
 /*main color: #ffc21c*/
 
-:root{
-    --primary-color: #ffc21c; 
+:root {
+    --primary-color: #ffc21c;
 }
 
-.categories{
+.categories {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
@@ -18,21 +18,14 @@
     background-color: var(--primary-color);
 }
 
-.wrapper{
+.wrapper {
     width: 450px;
     height: 400px;
-    background-color: #505050;
 }
 
-.form-box .image{
-    height: 150px;
-    object-fit: contain;
-    border-bottom: none;
-}
-
-.products button{
+.products button {
     border: none;
-    background-color: var(--primary-color); 
+    background-color: var(--primary-color);
     font-size: 18px;
     width: 30px;
     height: 30px;
@@ -40,24 +33,21 @@
     margin-right: 5px;
 }
 
-.products{
+.products {
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-#products-selector{
+#products-selector {
     margin-top: 120px;
     width: 100%;
 }
 
-#amount{
+#amount {
     left: 0;
     padding: 11px;
     border-radius: 10px 10px 0px 0px;
     color: var(--primary-color);
-}
-body{
-    background: none;
 }

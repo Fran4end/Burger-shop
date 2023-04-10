@@ -12,8 +12,32 @@ function fillBody() {
     let totalPrice = 0;
     json.forEach(element => {
         totalPrice += parseFloat(element.prezzo);
-        document.querySelector('.disable-scrollbars').innerHTML += '<ul><li><img src="img/hamburger.png"></li><span><li>' + element.nome +
-            '</li><li><span id="price">' + element.prezzo + '</span> €</li></span><span><span><li><button id="delete-button"><ion-icon name="trash-outline"></ion-icon></button></li></span><li><select name="" id=""><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></li></span></ul>'
+        document.querySelector('.disable-scrollbars').innerHTML +=
+            '<ul>' +
+            '<li><img src="img/hamburger.png"></li>' +
+            '<span>' +
+            '<li>' + element.nome + '</li>' +
+            '<li><span id="price">' + element.prezzo + '</span> €</li>' +
+            '</span>' +
+            '<span>' +
+            '<span>' +
+            '<li><button id="delete-button"><ion-icon name="trash-outline"></ion-icon></button></li>' +
+            '</span>' +
+            '<li>' +
+            '<select name="" id="">' +
+            '<option value="1">1</option>' +
+            '<option value="2">2</option>' +
+            '<option value="3">3</option>' +
+            '<option value="4">4</option>' +
+            '<option value="5">5</option>' +
+            '<option value="6">6</option>' +
+            '<option value="7">7</option>' +
+            '<option value="8">8</option>' +
+            '<option value="9">9</option>' +
+            '</select>' +
+            '</li>' +
+            '</span>' +
+            '</ul>'
     });
 
     if (document.querySelectorAll('.disable-scrollbars ul').length == 0) {

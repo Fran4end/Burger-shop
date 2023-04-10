@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../default.css">
     <link rel="stylesheet" href="home.css">
+    <script src="home.js"></script>
     <title>Burger-shop</title>
 </head>
+
 <body>
     <header>
-        <div class="logo"><img src="../logo.png" alt="50" width="50"><p>Burger-shop</p> </div>
+        <div class="logo">
+            <a href="/Burger-shop/Controller/Annulla.php">
+                <img src="../logo.png" alt="Logo">
+            </a>
+        </div>
         <nav class="navigation">
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
     </header>
-    <div id="logo"><img id="logoimg"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkHqJgQNNxCar3UH---CHPZ3NkXpb_xu-lJg&usqp=CAU" height="350px" width="350px"></div>
-    <div id="t1">
-        <form action="../../Controller/Creation.php" method="post">
-            <input type="submit" value="CREA ORDINE"></button>
-        </form>
+    <div class="wrapper">
+        <div class="form-box">
+            <form action="../../Controller/Creation.php" method="post">
+                <img class="image input-box" alt="logo" src="crea.png">
+                <input type="submit" class="btn" value="Crea il panino"></input>
+            </form>
+        </div>
     </div>
+    <div class="wrapper list">
+        <div class="form-box">
+            <h2>Storico degli ordini</h2>
+        </div>
+        <button class="collapsible ordered">Ordinati</button>
+        <div class="content ordered">
+        </div>
+        <button class="collapsible paid">Pagati</button>
+        <div class="content paid">
+        </div>
+        <button class="collapsible completed">Completati</button>
+        <div class="content completed">
+        </div>
+        <button class="collapsible delivered">Conseganti</button>
+        <div class="content delivered">
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll(".content" && ".collapsible").forEach((element) => element.style.display = 'none')
+    </script>
 </body>
+
 </html>

@@ -77,7 +77,7 @@ function buildIngredients(name, price, image, classe) {
     return '<div class="wrapper">' +
         '<div class="form-box">' +
         '<h2>' + name.charAt(0).toUpperCase() + name.replaceAll("_", " ").slice(1) + '</h2>' +
-        '<img class="image input-box" src=' + image + '>' +
+        '<img class="image" src=' + image + '>' +
         '<div class="input-box">' +
         '<span class="icon" id="' + name + '">' +
         '<button id="number' + name + '">0</button>' +

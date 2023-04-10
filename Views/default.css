@@ -16,6 +16,7 @@
 
 body {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -23,6 +24,12 @@ body {
     background-position: center;
     background-size: cover;
     overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 header {
@@ -82,12 +89,12 @@ header {
     width: 70px;
     height: 50px;
     background: transparent;
-    border: 2px solid #000;
+    border: 2px solid #fff;
     outline: none;
     border-radius: 15px;
     cursor: pointer;
     font-size: 1.8em;
-    color: #000;
+    color: #fff;
     font-weight: 500;
     margin-left: 40px;
 }
@@ -101,6 +108,7 @@ header {
     backdrop-filter: blur(15px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px auto;
@@ -108,13 +116,26 @@ header {
 
 .wrapper .form-box {
     width: 100%;
-    padding: 40px;
+    padding: 0px 40px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-box h2 {
     font-size: 2em;
     color: #ffc21c;
     text-align: center;
+}
+
+.form-box .image {
+    height: 150px;
+    object-fit: contain;
+    border-bottom: none;
+    position: relative;
+    width: 100%;
+    margin: 30px 0;
 }
 
 .input-box {
@@ -190,7 +211,7 @@ header {
     text-decoration: underline;
 }
 
-.cookie-banner__wrapper {
+.banner__wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -204,7 +225,7 @@ header {
     z-index: 9999;
 }
 
-.cookie-banner {
+.banner {
     position: fixed;
     width: 60%;
     height: auto;
@@ -220,12 +241,15 @@ header {
     font-family: Arial, sans-serif;
     line-height: 1.5;
     color: #212529;
+    border-radius: 20px;
 }
-.cookie-banner__message {
+
+.banner__message {
     margin-right: 20px;
     flex: 1 0 0;
 }
-.cookie-banner__button {
+
+.banner__button {
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
@@ -236,6 +260,6 @@ header {
     cursor: pointer;
 }
 
-.cookie-banner__button .btn{
+.banner__button .btn {
     width: 170px;
 }
