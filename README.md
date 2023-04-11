@@ -16,3 +16,5 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
     - utilizzare il Model per ottenere dati da ritornare alla View sotto forma di **json**
 
 #### Modello Entity-Reletionship ![UML](./Docs/ER_ThiasBurger.png)
+#### Schema Logico ![UML](./Docs/Schema_Logico_ThiasBurger.png)
+
