@@ -17,7 +17,7 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
 
 #### Modello Entity-Reletionship 
 <div align="center">
-    ![UML](./Docs/ER_ThiasBurger.png)
+    <img src="./Docs/ER_ThiasBurger.png">
 </div>
 
 #### Schema Logico 
