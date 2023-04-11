@@ -21,6 +21,6 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
 </div>
 
 #### Schema Logico 
-![UML](./Docs/Schema_Logico_ThiasBurger.png){ style="display: block; margin: 0 auto" }
+![UML](./Docs/Schema_Logico_ThiasBurger.png#center)
 
 
