@@ -15,6 +15,9 @@ L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
     - gestire i **dati degli ordini** dell'utente e passarli al Model
     - utilizzare il Model per ottenere dati da ritornare alla View sotto forma di **json**
 
-#### Modello Entity-Reletionship ![UML](./Docs/ER_ThiasBurger.png)
-#### Schema Logico ![UML](./Docs/Schema_Logico_ThiasBurger.png)
+#### Modello Entity-Reletionship 
+![UML](./Docs/ER_ThiasBurger.png)
+
+#### Schema Logico 
+![UML](./Docs/Schema_Logico_ThiasBurger.png)
 
