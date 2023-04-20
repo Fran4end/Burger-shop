@@ -2,7 +2,7 @@
 
 /**
  * If the user is logged, returns a json containing the orders, the panini and the ingredienti of a User
- * @author ErosM04
+ * TODO: adattarlo
  */
 
 require_once '../Models/Utente.php';

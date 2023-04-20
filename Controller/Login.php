@@ -2,23 +2,28 @@
 
 require '../Models/Utente.php';
 
-session_start();
+$user = new Utente('a', 'a');  //buffer initialization
 
-$user = new Utente('a', 'a');  //lazy initialization
-
-if(isset($_REQUEST['name'])){
+if(isset($_REQUEST['name']) && isset($_REQUEST['password'])){
     try { // try catch necessario in caso si inserisca un nome utente che non esiste
-        $user = $user->getUtenteByName($_REQUEST['name']);    
+        $user = $user->getUtenteByName($_REQUEST['name']);
     } catch (\Throwable $th) {
-        header('Location: ../Views/Login/LoginPage.html');
+        //error code 422
     }
     
     if($_REQUEST['password'] == $user->getPassword()){ // verifica che la password corrisponda
-        $_SESSION['user'] = $user->toJSON();
-        header('Location: ../Views/Home/home.html');
+        //ritornare il token
     }else{
-        header('Location: ../Views/Login/LoginPage.html');
+        //error code 422
     }
 }else{
-    header('Location: ../Views/Login/LoginPage.html');
+    //error code 422
+    error();
 }
+
+public function error()
+{
+    header("HTTP/1.1 422 Unprocessable Content");
+}
+
+?>
