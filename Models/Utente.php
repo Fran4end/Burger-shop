@@ -11,7 +11,7 @@ class Utente
     private $nome;
     private $password;
     private $saldo;
-    private $avatar;
+    private $token;
     private $db;
 
     public function __construct($nome, $password)
@@ -20,8 +20,8 @@ class Utente
         $this->nome = $nome;
         $this->password = $password;
         $this->saldo = 10000;
-        $this->avatar = 'https://e7.pngegg.com/pngimages/246/554
-        /png-clipart-computer-icons-user-avatar-avatar-heroes-black-thumbnail.png';
+        $this->token = 'https://e7.pngegg.com/pngimages/246/554
+        /png-clipart-computer-icons-user-token-token-heroes-black-thumbnail.png';
     }
     public function getAll()
     {
@@ -32,8 +32,8 @@ class Utente
     public function createUtente()
     {
         print_r($this);
-        $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`saldo`,`avatar`) VALUES (?, ?, ?, ?)");
-        $parms = [$this->nome, $this->password, $this->saldo, $this->avatar];
+        $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`saldo`,`token`) VALUES (?, ?, ?, ?)");
+        $parms = [$this->nome, $this->password, $this->saldo, $this->token];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
         return $this;
@@ -52,7 +52,7 @@ class Utente
         $this->nome = $res['nome'];
         $this->password = $res['password'];
         $this->saldo = $res['saldo'];
-        $this->avatar = $res['avatar'];
+        $this->token = $res['token'];
         return $this;
     }
 
@@ -66,7 +66,7 @@ class Utente
         $this->nome = $res['nome'];
         $this->password = $res['password'];
         $this->saldo = $res['saldo'];
-        $this->avatar = $res['avatar'];
+        $this->token = $res['token'];
         return $this;
     }
 
@@ -98,9 +98,9 @@ class Utente
     }
 
 
-    public function setAvatar($avatar)
+    public function setToken($token)
     {
-        $this->avatar = $avatar;
+        $this->token = $token;
     }
     public function setNome($nome)
     {
@@ -110,9 +110,9 @@ class Utente
     {
         $this->password = $password;
     }
-    public function getAvatar()
+    public function getToken()
     {
-        return $this->avatar;
+        return $this->token;
     }
 
     //RETURNS JSON
@@ -123,7 +123,7 @@ class Utente
                 "User_ID" => $this->id,
                 "Username" => $this->getNome(),
                 "Password" => $this->getPassword(),
-                "Avatar" => $this->getAvatar(),
+                "Token" => $this->getToken(),
                 "Saldo" => $this->getSaldo()
             )
         );

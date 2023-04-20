@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 30, 2023 alle 08:28
+-- Creato il: Apr 20, 2023 alle 09:48
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `thias-burger`
 --
-CREATE DATABASE IF NOT EXISTS `thias-burger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `thias-burger`;
 
 -- --------------------------------------------------------
 
@@ -29,15 +27,13 @@ USE `thias-burger`;
 -- Struttura della tabella `ingrediente`
 --
 
-DROP TABLE IF EXISTS `ingrediente`;
-CREATE TABLE IF NOT EXISTS `ingrediente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ingrediente` (
+  `id` int(11) NOT NULL,
   `prezzo` float NOT NULL,
   `immagine` varchar(200) NOT NULL,
   `nome` varchar(200) NOT NULL,
-  `categoria` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `categoria` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `ingrediente`
@@ -59,15 +55,25 @@ INSERT INTO `ingrediente` (`id`, `prezzo`, `immagine`, `nome`, `categoria`) VALU
 -- Struttura della tabella `ordine`
 --
 
-DROP TABLE IF EXISTS `ordine`;
-CREATE TABLE IF NOT EXISTS `ordine` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ordine` (
+  `id` int(11) NOT NULL,
   `id_utente` int(11) NOT NULL,
   `pagato` tinyint(1) NOT NULL,
   `consegnato` tinyint(1) NOT NULL,
-  `prezzo` float NOT NULL,
-  PRIMARY KEY (`id`)
+  `prezzo` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `ordine`
+--
+
+INSERT INTO `ordine` (`id`, `id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES
+(1, 5, 0, 0, 22),
+(2, 5, 0, 0, 12),
+(3, 4, 0, 0, 25),
+(4, 5, 1, 0, 44.3),
+(5, 5, 0, 1, 65.53),
+(6, 5, 1, 1, 77.7);
 
 -- --------------------------------------------------------
 
@@ -75,15 +81,26 @@ CREATE TABLE IF NOT EXISTS `ordine` (
 -- Struttura della tabella `panino`
 --
 
-DROP TABLE IF EXISTS `panino`;
-CREATE TABLE IF NOT EXISTS `panino` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `panino` (
+  `id` int(11) NOT NULL,
   `id_ordine` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `pronto` tinyint(1) NOT NULL,
-  `prezzo` double NOT NULL,
-  PRIMARY KEY (`id`)
+  `prezzo` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `panino`
+--
+
+INSERT INTO `panino` (`id`, `id_ordine`, `nome`, `pronto`, `prezzo`) VALUES
+(1, 1, 'Panino1', 0, 5),
+(2, 1, 'Panino2', 1, 17),
+(3, 2, 'Panino3', 0, 12),
+(4, 4, 'Panino4', 0, 44.3),
+(5, 5, 'Panino5', 1, 65.53),
+(6, 6, 'Panino6', 1, 70),
+(7, 6, 'Panino7', 1, 7.7);
 
 -- --------------------------------------------------------
 
@@ -91,13 +108,30 @@ CREATE TABLE IF NOT EXISTS `panino` (
 -- Struttura della tabella `preparazione`
 --
 
-DROP TABLE IF EXISTS `preparazione`;
-CREATE TABLE IF NOT EXISTS `preparazione` (
+CREATE TABLE `preparazione` (
   `id_panino` int(11) NOT NULL,
   `id_ingrediente` int(11) NOT NULL,
   `id_ordine` int(11) NOT NULL,
   `quantità` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `preparazione`
+--
+
+INSERT INTO `preparazione` (`id_panino`, `id_ingrediente`, `id_ordine`, `quantità`) VALUES
+(1, 3, 1, 2),
+(1, 4, 1, 3),
+(2, 6, 1, 12),
+(2, 8, 1, 1),
+(3, 1, 2, 2),
+(4, 2, 4, 1),
+(4, 6, 4, 3),
+(5, 5, 5, 5),
+(6, 6, 6, 6),
+(7, 1, 6, 1),
+(7, 4, 6, 1),
+(7, 5, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -105,22 +139,77 @@ CREATE TABLE IF NOT EXISTS `preparazione` (
 -- Struttura della tabella `utente`
 --
 
-DROP TABLE IF EXISTS `utente`;
-CREATE TABLE IF NOT EXISTS `utente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utente` (
+  `id` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `saldo` double NOT NULL,
-  `avatar` varchar(800) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `token` varchar(800) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`id`, `nome`, `password`, `saldo`, `avatar`) VALUES
-(4, 'Prova', '1234', 0, 'https://cdn-icons-png.flaticon.com/512/236/236832.png');
+INSERT INTO `utente` (`id`, `nome`, `password`, `saldo`, `token`) VALUES
+(4, 'Prova', '1234', 5000, '123456789'),
+(5, 'Eros', '1234', 10000, '987654321');
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `ingrediente`
+--
+ALTER TABLE `ingrediente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `ordine`
+--
+ALTER TABLE `ordine`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `panino`
+--
+ALTER TABLE `panino`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `utente`
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `ingrediente`
+--
+ALTER TABLE `ingrediente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT per la tabella `ordine`
+--
+ALTER TABLE `ordine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT per la tabella `panino`
+--
+ALTER TABLE `panino`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT per la tabella `utente`
+--
+ALTER TABLE `utente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
