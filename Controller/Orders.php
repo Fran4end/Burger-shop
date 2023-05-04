@@ -10,15 +10,15 @@ require_once '../Models/Ordine.php';
 require_once '../Models/Panino.php';
 require_once '../Models/Ingrediente.php';
 
-session_start();
-
-if(isset($_SESSION['user'])){
-
-    
-    // updates user data in the SESSION
+if(isset($_REQUEST['token'])){
     $userObj = new Utente('a', 'a');
-    $userObj->getUtenteById(json_decode($_SESSION['user'], true)['User_ID']);
-    $_SESSION['user'] = $userObj->toJSON();
+    try {
+        $userObj = $userObj->getUtenteByToken($_REQUEST['token']);
+    } catch (Exception $e) {
+        http_response_code(422);
+        echo 'Wrong token';
+        exit;
+    }
 
     //gets all the orders based on the user id
     $orderObj = new Ordine();
@@ -49,6 +49,10 @@ if(isset($_SESSION['user'])){
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
     echo json_encode($ordersJson);
+}else {
+    http_response_code(422);
+    echo 'No parameters';
+    exit;
 }
 
 /**

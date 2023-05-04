@@ -54,6 +54,23 @@ class Utente
         return $this;
     }
 
+    public function getUtenteByToken($token)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `token` = ?');
+        $parms = [$token];
+        $stmt->execute($parms);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        if (empty($res)) {
+            throw new Exception("Error User Not Found", 1);
+        }
+        $this->id = $res['id'];
+        $this->nome = $res['nome'];
+        $this->password = $res['password'];
+        $this->saldo = $res['saldo'];
+        $this->token = $res['token'];
+        return $this;
+    }
+
     public function getUtenteById($id)
     {
         $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `id` = ?');
