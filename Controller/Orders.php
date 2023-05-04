@@ -14,6 +14,7 @@ session_start();
 
 if(isset($_SESSION['user'])){
 
+    
     // updates user data in the SESSION
     $userObj = new Utente('a', 'a');
     $userObj->getUtenteById(json_decode($_SESSION['user'], true)['User_ID']);

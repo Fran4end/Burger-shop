@@ -20,8 +20,7 @@ class Utente
         $this->nome = $nome;
         $this->password = $password;
         $this->saldo = 10000;
-        $this->token = 'https://e7.pngegg.com/pngimages/246/554
-        /png-clipart-computer-icons-user-token-token-heroes-black-thumbnail.png';
+        $this->token = uniqid($nome);
     }
     public function getAll()
     {
@@ -31,7 +30,6 @@ class Utente
 
     public function createUtente()
     {
-        print_r($this);
         $stmt = $this->db->prepare("INSERT INTO `utente` (`nome`,`password`,`saldo`,`token`) VALUES (?, ?, ?, ?)");
         $parms = [$this->nome, $this->password, $this->saldo, $this->token];
         $stmt->execute($parms);
@@ -46,7 +44,7 @@ class Utente
         $stmt->execute($parms);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
         if (empty($res)) {
-            return $res;
+            throw new Exception("Error User Not Found", 1);
         }
         $this->id = $res['id'];
         $this->nome = $res['nome'];

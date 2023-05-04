@@ -7,23 +7,24 @@ $user = new Utente('a', 'a');  //buffer initialization
 if(isset($_REQUEST['name']) && isset($_REQUEST['password'])){
     try { // try catch necessario in caso si inserisca un nome utente che non esiste
         $user = $user->getUtenteByName($_REQUEST['name']);
-    } catch (\Throwable $th) {
-        //error code 422
+    } catch (Exception $e) {
+        http_response_code(422);
+        echo 'User not found';
+        exit;
     }
     
     if($_REQUEST['password'] == $user->getPassword()){ // verifica che la password corrisponda
-        //ritornare il token
+        echo json_encode($user->getToken());
+        exit;
     }else{
-        //error code 422
+        http_response_code(422);
+        echo 'Password incorrect';
+        exit;
     }
 }else{
-    //error code 422
-    error();
-}
-
-public function error()
-{
-    header("HTTP/1.1 422 Unprocessable Content");
+    http_response_code(422);
+    echo 'No parameters';
+    exit;
 }
 
 ?>
