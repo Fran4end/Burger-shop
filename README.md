@@ -17,7 +17,7 @@ Poiché noi le cose le facciamo bene, i parametri possono essere passati sia con
 - Consultare la lista degli ingredienti, invocando il file php ``Ingredients.php``.
 - Registrare un utente invocando il file ``Register.php``, passando come paremetri username e pw ("name" e "password"). Se la richiesta va a buon fine verrà restituito un token importante perché mediante questo sarà possibile ordinare i panini e consultare la lista di panini ordinati.
 - Accedere come utente precedentemente registrato invocando il file ``Login.php``, passando come paremetri username e pw ("name" e "password"). Se la richiesta va a buon fine verrà restituito il token relativo all'utente.
-- Consultare i panini ordinati (lo storico degli ordini) e il saldo relativi ad uno specifico utente invocando il file ``Orders.php`` e passando tramite GET o POST il token (es URL?token=1234). Se la richiesta andrà a buon fine verrà restituito appunto lo storico dei panini.
+- Consultare i panini ordinati (lo storico degli ordini) e il saldo, relativi ad uno specifico utente invocando il file ``Orders.php`` e passando tramite GET o POST il token (es URL?token=1234). Se la richiesta andrà a buon fine verrà restituito appunto lo storico dei panini. Per l'esempio della risposta vedere il file ``Docs/orders.json``.
 - Ordinare dei panini invocando il file ``Purchase.php`` e passando tramite **GET** il token relativo ad un utente già registrato e tramite **POST** la lista dei panini da ordinare che dovrà avere la formattazione indicata nel file ``Docs/dummy.json``. Se la richiesta andrà a buon fine verrà ritornato il saldo rimanente relativo all'utente.
 
 ## Cose importanti da sapere prima di usare l'API

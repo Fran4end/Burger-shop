@@ -1,0 +1,195 @@
+{
+    "saldo": 10000,
+    "ordini": {
+      "ordinati": [
+        {
+          "id": 1,
+          "prezzo": 22,
+          "panini": [
+            {
+              "id": 1,
+              "nome": "Panino1",
+              "pronto": 0,
+              "prezzo": 5,
+              "ingredienti": [
+                {
+                  "id": 3,
+                  "prezzo": 1.25,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/1202/1202125.png",
+                  "nome": "pomodoro",
+                  "categoria": "verdure",
+                  "quantità": 2
+                },
+                {
+                  "id": 4,
+                  "prezzo": 1.27,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/135/135715.png",
+                  "nome": "lattuga",
+                  "categoria": "verdure",
+                  "quantità": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "nome": "Panino2",
+              "pronto": 1,
+              "prezzo": 17,
+              "ingredienti": [
+                {
+                  "id": 6,
+                  "prezzo": 1.9,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/8584/8584834.png",
+                  "nome": "cheddar",
+                  "categoria": "formaggio",
+                  "quantità": 12
+                },
+                {
+                  "id": 8,
+                  "prezzo": 0.25,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/877/877722.png",
+                  "nome": "Ketchup",
+                  "categoria": "salse",
+                  "quantità": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "prezzo": 12,
+          "panini": [
+            {
+              "id": 3,
+              "nome": "Panino3",
+              "pronto": 0,
+              "prezzo": 12,
+              "ingredienti": [
+                {
+                  "id": 1,
+                  "prezzo": 0.5,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/6775/6775833.png",
+                  "nome": "pane_bianco",
+                  "categoria": "pane",
+                  "quantità": 2
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "pagati": [
+        {
+          "id": 4,
+          "prezzo": 44.3,
+          "panini": [
+            {
+              "id": 4,
+              "nome": "Panino4",
+              "pronto": 0,
+              "prezzo": 44.3,
+              "ingredienti": [
+                {
+                  "id": 2,
+                  "prezzo": 0.75,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/3014/3014502.png",
+                  "nome": "pane_integrale",
+                  "categoria": "pane",
+                  "quantità": 1
+                },
+                {
+                  "id": 6,
+                  "prezzo": 1.9,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/8584/8584834.png",
+                  "nome": "cheddar",
+                  "categoria": "formaggio",
+                  "quantità": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "consegnati": [
+        {
+          "id": 5,
+          "prezzo": 65.53,
+          "panini": [
+            {
+              "id": 5,
+              "nome": "Panino5",
+              "pronto": 1,
+              "prezzo": 65.53,
+              "ingredienti": [
+                {
+                  "id": 5,
+                  "prezzo": 2,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/2403/2403359.png",
+                  "nome": "hamburger_classico",
+                  "categoria": "carne",
+                  "quantità": 5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "completati": [
+        {
+          "id": 6,
+          "prezzo": 77.7,
+          "panini": [
+            {
+              "id": 6,
+              "nome": "Panino6",
+              "pronto": 1,
+              "prezzo": 70,
+              "ingredienti": [
+                {
+                  "id": 6,
+                  "prezzo": 1.9,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/8584/8584834.png",
+                  "nome": "cheddar",
+                  "categoria": "formaggio",
+                  "quantità": 6
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "nome": "Panino7",
+              "pronto": 1,
+              "prezzo": 7.7,
+              "ingredienti": [
+                {
+                  "id": 1,
+                  "prezzo": 0.5,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/6775/6775833.png",
+                  "nome": "pane_bianco",
+                  "categoria": "pane",
+                  "quantità": 1
+                },
+                {
+                  "id": 4,
+                  "prezzo": 1.27,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/135/135715.png",
+                  "nome": "lattuga",
+                  "categoria": "verdure",
+                  "quantità": 1
+                },
+                {
+                  "id": 5,
+                  "prezzo": 2,
+                  "immagine": "https://cdn-icons-png.flaticon.com/512/2403/2403359.png",
+                  "nome": "hamburger_classico",
+                  "categoria": "carne",
+                  "quantità": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+}
