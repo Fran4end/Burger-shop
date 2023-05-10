@@ -10,6 +10,7 @@ Segue un esempio della richiesta per registrarsi:
 ``
 20.31.133.144/Burger-shop/Controller/Register.php?name=Pippo&password=aH5n8#3
 ``
+
 Poiché noi le cose le facciamo bene, i parametri possono essere passati sia con una **GET** (e quindi con i parametri nell'URL) o con la **POST** (con i parametri nel body), quest'ultima è più sicura e quindi consigliata.
 
 ## Cosa permette di fare la nostra API
