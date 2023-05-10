@@ -4,7 +4,9 @@ La seguente API-REST consente di gestire la registrazione e l'accesso agli utent
 
 ## Come raggiungere la nostra API
 Per collegarsi sarà sufficiente raggiungere il nostro server Linux, hostato da Microsoft Azure (24/7), all'indirizzo ``20.31.133.144``.
-Segue un esempio della rihiesta per registrarsi:
+
+Segue un esempio della richiesta per registrarsi:
+
 ``
 20.31.133.144/Burger-shop/Controller/Register.php?name=Pippo&password=aH5n8#3
 ``
