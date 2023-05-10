@@ -4,13 +4,12 @@ require_once '../Models/Ingrediente.php';
 require_once '../Models/Ordine.php';
 require_once '../Models/Utente.php';
 
-
 // if the user correctly sent the json containing the panini
 if (!empty(json_decode(file_get_contents('php://input'), true))) {
     // decodes the json 
     $json = json_decode(file_get_contents('php://input'), true);
     
-    if (!isset($json['token'])) {
+    if (!isset($_REQUEST['token'])) {
         http_response_code(422);
         echo 'Token not found';
         exit;
@@ -18,7 +17,7 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
 
     $user = new Utente('a', 'a');
     try {
-        $user = $user->getUtenteByToken($json['token']);
+        $user = $user->getUtenteByToken($_REQUEST['token']);
     } catch (Exception $e) {
         http_response_code(422);
         echo 'Wrong token';
