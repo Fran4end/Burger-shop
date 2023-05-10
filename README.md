@@ -1,28 +1,13 @@
-# Site for ThiasBurger
+# API Generazione Panini
 
-*Voglia di un panino diverso dal solito? Prova **Thiasburger**! Panini **gourmet** caldi e preparati a mano, a prezzi abbordabili.*
+La seguente API-REST consente di gestire la registrazione e l'accesso agli utenti che potranno ordinare il loro panino.
 
-## Struttura del lavoro
-L'intera struttura del sito si basa sul pattern **M**odel **V**iew **C**ontrol.
-- **M**odel si occupa della *gestione di dati e veariabili* sia in lettura che in scrittura: in pratica, in base agli input ricevuti, il Model si occupa di *modificare lo stato del programma*. Nel nostro caso, la sezione Model si è occupata di progettare e realizzare:
-    - il **database** su cui il programma va ad appoggiarsi per memorizzare *ingredienti, ordini, panini* e *utenti* che richiedono gli ordini
-    - le varie **classi** su cui si appoggia l'intero programma
-    - l'**interazione** tra classi e database
-- **V**iew è la "facciata" del programma, ovvero ciò che si presenta alla vista degli utenti. Ciò che è visibile cambia in base ai cambiamenti di stato del Model. Nel nostro caso, la sezione View si è occupata di: 
-    - inserire testo qui
-- **C**ontrol è la parte di gestione degli input prima che questi possano raggiungere il model. Questo accade sia per praticità, sia per separare la sezione input dalla parte gestionale, in modo che, qualora venisse inserito un input potenzialmente dannoso, questo possa essere controllato e fermato in tempo. Nel nostro caso, il Control si è occupato di: 
-    - gestire la **navigazione** dirottando l'utente tra le diverse pagine
-    - gestire i **dati degli ordini** dell'utente e passarli al Model
-    - utilizzare il Model per ottenere dati da ritornare alla View sotto forma di **json**
+## Cosa fornisce la nostra API?
 
-#### Modello Entity-Reletionship 
-![UML](./Docs/ER_ThiasBurger.png#center)
+- Consultare la lista degli ingredienti , invocando il file php Ingredients.php
+- Registrare un utente invocando il file Register.php, passando come paremetri username e pw (name e password). Se la richiesta va a buon fine verrà restituito un token importante perché mediante questo sarà possibile ordinare i panini e consultare la lista di panini ordinati.
+- Accedere come utente precedentemente registrato invocando il file Login.php, passando come paremetri username e pw (name e password). Se la richiesta va a buon fine verrà restituito il token relativo all'utente.
+- Consultare i panini ordinati (lo storico degli ordini) relativo ad uno specifico utente invocando il file Orders.php e passando tramite get o post il token (es URL?token=1234). Se la richiesta andrà a buon fine verrà restituito appunto lo storico dei panini.
+- Ordinare dei panini invocando il file Purchase.php e passando tramite get il token relativo ad un utente già registrato e tramite post la lista dei panini da ordinare che dovrà avere la formattazione indicata nel file dummy.json . Se la richiesta andrà a buon fine verrà ritornato il saldo rimanente relativo all'utente.
 
-
-#### Schema Logico 
-![UML](./Docs/Schema_Logico_ThiasBurger.png#center)
-
-#### Diagramma UML dei casi d'uso 
-![UML](./Docs/Casi_uso_ThiasBurger.png#center)
-
-
+E ORA PROGRAMMATORE BUONO SVILUPPO DELLA TUA APPLICAZIONE DI BURGER SHOP!!!
