@@ -4,11 +4,12 @@ require_once '../Models/Ingrediente.php';
 require_once '../Models/Ordine.php';
 require_once '../Models/Utente.php';
 
+
 // if the user correctly sent the json containing the panini
 if (!empty(json_decode(file_get_contents('php://input'), true))) {
     // decodes the json 
     $json = json_decode(file_get_contents('php://input'), true);
-    
+
     if (!isset($_REQUEST['token'])) {
         http_response_code(422);
         echo 'Token not found';
@@ -70,10 +71,7 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
             }
         }
     }
-
-    // deletes the order in the SESSION and redirects to home
-    unset($_SESSION['order']);
-    echo json_encode(["result" => true]);
+    echo json_encode(["saldo" => $user->getSaldo()]);
 } else { //if the data of the order don't exist
     http_response_code(422);
     echo 'No parameters';
@@ -88,7 +86,8 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
  * @param string $name the name of the Ingrediente to find
  * @param array $all the array containing al the Ingredienti to iterate
  */
-function getIngredientId($name, $all) {
+function getIngredientId($name, $all)
+{
     foreach ($all as $ing) {
         if ($ing['nome'] == $name) {
             return $ing['id'];
