@@ -14,7 +14,7 @@ if(isset($_REQUEST['name']) && isset($_REQUEST['password'])){
     }
     
     if($_REQUEST['password'] == $user->getPassword()){ // verifica che la password corrisponda
-        echo json_encode($user->getToken());
+        echo json_encode(["token" => $user->getToken()]);
         exit;
     }else{
         http_response_code(422);
