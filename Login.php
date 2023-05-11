@@ -1,6 +1,7 @@
 <?php
 
 require 'Models/Utente.php';
+header('Access-Control-Allow-Origin: *');
 
 $user = new Utente('a', 'a');  //buffer initialization
 
