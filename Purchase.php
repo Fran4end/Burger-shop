@@ -3,6 +3,7 @@ require_once 'Models/Panino.php';
 require_once 'Models/Ingrediente.php';
 require_once 'Models/Ordine.php';
 require_once 'Models/Utente.php';
+header('Access-Control-Allow-Origin: *');
 
 
 // if the user correctly sent the json containing the panini
