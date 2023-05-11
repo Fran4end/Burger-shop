@@ -14,6 +14,12 @@ Segue un esempio della richiesta per registrarsi:
 20.31.133.144/Burger-shop/Register.php?name=Pippo&password=aH5n8#3
 ``
 
+Risposta:
+
+``
+{"token":"g9876b#32à1"}
+``
+
 Poiché noi le cose le facciamo bene, i parametri possono essere passati sia con una **GET** (e quindi con i parametri nell'URL) o con la **POST** (con i parametri nel body), quest'ultima è più sicura e quindi consigliata.
 
 ## Cosa permette di fare la nostra API
@@ -30,7 +36,7 @@ Poiché noi le cose le facciamo bene, i parametri possono essere passati sia con
 2. Sia ``Register.php`` che ``Login.php`` rispondono con un token alla voce "token", mentre ``Purchase.php`` con il saldo alla voce "saldo".
 3. Poiché il db è condiviso, mentre sviluppate la vostra meravigliosa app, sarebbe meglio se usaste sempre lo stesso utente per non riempire il db di spazzatura.
 4. Ricordiamo che quando ricevete una risposta basta fare il decode e leggere i parametri, l'avete già fatto quando avete lavorato con le API, quindi evitiamo di disturbare chi lavora per ste robe grazie.
-5. Il token è una **stringa**.
+5. Il token è una **stringa**, es ``{"token":"g9876b#32à1"}``.
 6. Se avete domande, pensateci bene perché magari la risposta è ovvia (basta usare questo 🧠) o è scritta qui.
 7. La più **IMPORTANTE**: non rompete alla povera gente che già vi ha tirato su tutto il server e l'api, perché se ci disturbate vi mandiamo i pacchi bomba a casa.🥰
 
