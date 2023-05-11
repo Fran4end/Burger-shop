@@ -8,6 +8,7 @@ require_once 'Models/Utente.php';
 require_once 'Models/Ordine.php';
 require_once 'Models/Panino.php';
 require_once 'Models/Ingrediente.php';
+header('Access-Control-Allow-Origin: *');
 
 if (isset($_REQUEST['token'])) {
     $userObj = new Utente('a', 'a');
