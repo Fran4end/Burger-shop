@@ -42,7 +42,11 @@ class Utente
         $stmt = $this->db->prepare('SELECT * FROM `utente` WHERE `nome` = ?');
         $parms = [$name];
         $stmt->execute($parms);
-        $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        try {
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+        } catch (\Throwable $th) {
+            throw new Exception("Error User Not Found", 1);
+        }
         if (empty($res)) {
             throw new Exception("Error User Not Found", 1);
         }
@@ -96,9 +100,10 @@ class Utente
         $stmt->execute($parms);
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
-    } 
+    }
     public function getNome()
     {
         return $this->nome;
