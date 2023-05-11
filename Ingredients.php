@@ -5,6 +5,7 @@
  */
 
 header('Content-Type:application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
 
 include 'Models/Ingrediente.php';
 $ingredient = new Ingrediente();
