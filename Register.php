@@ -1,10 +1,11 @@
 <?php
 
-require '../Models/Utente.php';
+require 'Models/Utente.php';
 
 $user = '';
 
-if (isset($_REQUEST['name']) && isset($_REQUEST['password']) && $_REQUEST['name'] != '' && $_REQUEST['password'] != '') {
+if (isset($_REQUEST['name']) && isset($_REQUEST['password']) 
+&& $_REQUEST['name'] != '' && $_REQUEST['password'] != '') {
     $user = new Utente($_REQUEST['name'], $_REQUEST['password']);
     try {
         $buff = $user->getUtenteByName($_REQUEST['name']);
@@ -22,6 +23,3 @@ if (isset($_REQUEST['name']) && isset($_REQUEST['password']) && $_REQUEST['name'
     echo 'No parameters';
     exit;
 }
-?>
-
-</html>

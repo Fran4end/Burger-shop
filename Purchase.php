@@ -1,8 +1,8 @@
 <?php
-require_once '../Models/Panino.php';
-require_once '../Models/Ingrediente.php';
-require_once '../Models/Ordine.php';
-require_once '../Models/Utente.php';
+require_once 'Models/Panino.php';
+require_once 'Models/Ingrediente.php';
+require_once 'Models/Ordine.php';
+require_once 'Models/Utente.php';
 
 
 // if the user correctly sent the json containing the panini

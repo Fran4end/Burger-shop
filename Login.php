@@ -1,6 +1,6 @@
 <?php
 
-require '../Models/Utente.php';
+require 'Models/Utente.php';
 
 $user = new Utente('a', 'a');  //buffer initialization
 
