@@ -4,7 +4,7 @@
  * Returns a json containing all the ingredients in the db
  */
 
-header("content-type: application/json");
+header('Content-Type: application/json; charset=utf-8');
 
 include 'Models/Ingrediente.php';
 $ingredient = new Ingrediente();
