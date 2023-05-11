@@ -2,6 +2,8 @@
 
 La seguente API-REST consente di gestire la registrazione e l'accesso agli utenti che potranno ordinare il loro panino e visualizzare lo storico.
 
+LEGGETE TUTTO!!!
+
 ## Come raggiungere la nostra API
 
 Per collegarsi sarà sufficiente raggiungere il nostro server Linux, hostato da Microsoft Azure (24/7), all'indirizzo ``20.31.133.144``.
