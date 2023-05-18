@@ -28,7 +28,7 @@ if (isset($_REQUEST['token'])) {
     if (empty($orders)) {
         header("Access-Control-Allow-Origin: *");
         header('Content-Type: application/json');
-        echo json_encode($orders);
+        echo json_encode(["saldo" => $userObj->getSaldo(), "ordini" => []]);
         exit;
     }
 
