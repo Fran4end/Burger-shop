@@ -15,7 +15,7 @@ class Panino
     public function __construct()
     {
         $this->db = QueryDB::getDB();
-        $this->pronto = false;
+        $this->pronto = 0;
         $this->prezzo = 0;
         $this->id = -1;
         $this->pane;
@@ -60,7 +60,7 @@ class Panino
             return;
         }
         $stmt = $this->db->prepare("INSERT INTO `panino` (`id_ordine`,`nome`,`pane`,`pronto`,`prezzo`) VALUES (?, ?, ?, ?, ?)");
-        $parms = [$id_ordine, $this->nome, $this->pane, false, $this->prezzo];
+        $parms = [$id_ordine, $this->nome, $this->pane, 0, $this->prezzo];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
         return $this;
