@@ -40,14 +40,16 @@ class Panino
      * @return array an array containing all the Panini
      * @author ErosM04
      */
-    public function getPaninoByOrder($id_ordine){
+    public function getPaninoByOrder($id_ordine)
+    {
         $stmt = $this->db->prepare(
-            "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pane` `panino`.`pronto`, `panino`.`prezzo`
+            "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pane`, `panino`.`pronto`, `panino`.`prezzo`
             FROM `panino`
             INNER JOIN `ordine` ON `panino`.`id_ordine` = `ordine`.`id`
-            WHERE `ordine`.`id` = ?");
+            WHERE `ordine`.`id` = ?"
+        );
         $parms = [$id_ordine];
-        
+
         $stmt->execute($parms);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
