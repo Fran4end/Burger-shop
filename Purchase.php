@@ -51,7 +51,6 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
     //creates the Panini
     $ingrediente = new Ingrediente();
     $all_ingredients = $ingrediente->getAll();
-
     $panino = new Panino();
 
     foreach ($json as $burger) {

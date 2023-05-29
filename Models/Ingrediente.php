@@ -1,9 +1,6 @@
 <?php
 require_once 'QueryDB.php';
 
-/**
- * TESTED 100%
- */
 class Ingrediente
 {
 

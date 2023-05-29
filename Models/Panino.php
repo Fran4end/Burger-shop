@@ -1,9 +1,6 @@
 <?php
 // use PDO;
 
-/**
- * TESTED 100%
- */
 class Panino
 {
 

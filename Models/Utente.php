@@ -2,9 +2,6 @@
 
 require_once 'QueryDB.php';
 
-/**
- * TESTED 100%
- */
 class Utente
 {
     private $id;

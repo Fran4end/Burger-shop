@@ -85,10 +85,12 @@ function addPanini($id_order)
     $paninoObj = new Panino();
     $panini = $paninoObj->getPaninoByOrder($id_order);
     $arr = array();
+    $ingredienteObj = new Ingrediente();
 
     // gets the ingredienti and add the panino to the array
     foreach ($panini as $panino) {
         $panino['ingredienti'] = addIngredienti($id_order, $panino['id']);
+        $panino['pane'] = $ingredienteObj->getIngredienteById($panino['pane'])['nome'];
         $arr[] = $panino;
     }
 

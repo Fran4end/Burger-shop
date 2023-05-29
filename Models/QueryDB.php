@@ -5,8 +5,6 @@ require_once 'Config.php';
 
 /**
  * Base model
- *
- * TESTED 100%
  */
 abstract class QueryDB
 {

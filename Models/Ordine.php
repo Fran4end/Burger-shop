@@ -4,9 +4,6 @@ use FFI\Exception;
 require_once 'QueryDB.php';
 // use PDO;
 
-/**
- * TESTED 100%
- */
 class Ordine
 {
 
