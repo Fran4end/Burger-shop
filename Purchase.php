@@ -72,7 +72,7 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
             }
         }
     }
-    echo json_encode(["saldo" => $user->getSaldo()]);
+    echo json_encode(["saldo" => $user->getSaldo() - $amount]);
 } else { //if the data of the order don't exist
     http_response_code(422);
     echo 'No parameters';
