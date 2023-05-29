@@ -16,10 +16,10 @@ class Ordine
     public function __construct()
     {
         $this->db = QueryDB::getDB();
-        $this->pagato = false;
+        $this->pagato = 0;
         $this->prezzo = 0;
         $this->id = -1;
-        $this->consegnato = false;
+        $this->consegnato = 0;
     }
 
     public function getAll()
@@ -54,7 +54,7 @@ class Ordine
         (`id_utente`, `pagato`, `consegnato`, `prezzo`) VALUES (?,?,?,?)",
             [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]
         );
-        $parms = [$id_utente, false, false, $this->prezzo];
+        $parms = [$id_utente, 0, 0, $this->prezzo];
 
         $stmt->execute($parms);
 
