@@ -59,6 +59,7 @@ if (!empty(json_decode(file_get_contents('php://input'), true))) {
         for ($i = 0; $i < $burger['quantità']; $i++) {
 
             $panino->setNome($burger['nome']);
+            $panino->setPane(getIngredientId($burger['pane'], $all_ingredients));
             $panino->setPrezzo($burger['prezzo']);
             $panino->createBurger($order_id);
 

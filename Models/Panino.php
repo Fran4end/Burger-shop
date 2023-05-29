@@ -12,6 +12,7 @@ class Panino
     private $pronto;
     private $prezzo;
     private $ingredienti;
+    private $pane;
     private $db;
 
     public function __construct()
@@ -20,6 +21,7 @@ class Panino
         $this->pronto = false;
         $this->prezzo = 0;
         $this->id = -1;
+        $this->pane;
         $this->nome = 'panino';
     }
 
@@ -43,7 +45,7 @@ class Panino
      */
     public function getPaninoByOrder($id_ordine){
         $stmt = $this->db->prepare(
-            "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pronto`, `panino`.`prezzo`
+            "SELECT `panino`.`id`, `panino`.`nome`, `panino`.`pane` `panino`.`pronto`, `panino`.`prezzo`
             FROM `panino`
             INNER JOIN `ordine` ON `panino`.`id_ordine` = `ordine`.`id`
             WHERE `ordine`.`id` = ?");
@@ -60,8 +62,8 @@ class Panino
             throw new Exception("The burger is not initialized");
             return;
         }
-        $stmt = $this->db->prepare("INSERT INTO `panino` (`id_ordine`,`nome`,`pronto`,`prezzo`) VALUES (?, ?, ?, ?)");
-        $parms = [$id_ordine, $this->nome, false, $this->prezzo];
+        $stmt = $this->db->prepare("INSERT INTO `panino` (`id_ordine`,`nome`,`pane`,`pronto`,`prezzo`) VALUES (?, ?, ?, ?, ?)");
+        $parms = [$id_ordine, $this->nome, $this->pane, false, $this->prezzo];
         $stmt->execute($parms);
         $this->id = $this->db->lastInsertId();
         return $this;
@@ -106,6 +108,7 @@ class Panino
         echo $res;
         $this->id = $res['id'];
         $this->nome = $res['nome'];
+        $this->pane = $res['pane'];
         $this->pronto = $res['pronto'];
         $this->prezzo = $res['prezzo'];
         $this->ingredienti = $res['ingredienti'];
@@ -154,6 +157,14 @@ class Panino
     {
         $this->prezzo = $prezzo;
     }
+    public function getPane()
+    {
+        return $this->pane;
+    }
+    public function setPane($pane)
+    {
+        $this->pane = $pane;
+    }
 
     //RETURNS JSON
     public function toJSON()
@@ -162,6 +173,7 @@ class Panino
             array(
                 "Burger_ID" => $this->getId(),
                 "Burger_Name" => $this->getNome(),
+                "Burger_Pane" => $this->getPane(),
                 "Burger_Price" => $this->getPrezzo(),
                 "Ingredients" => $this->getIngredienti(),
                 "Ready" => $this->getPronto()
