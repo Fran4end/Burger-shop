@@ -19,13 +19,13 @@ class Config
      * Database user
      * @var string
      */
-    const DB_USER = 'root';
+    const DB_USER = 'Fran4end';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = '';
+    const DB_PASSWORD = 'Fran4end/db';
 
     /**
      * Show or hide error messages on screen
