@@ -13,7 +13,7 @@ if (
     try {
         $buff = $user->getUtenteByName($_REQUEST['name']);
         http_response_code(422);
-        echo 'Usermame already used';
+        echo 'Username already used';
         exit;
     } catch (Exception $e) {
         $user->createUtente();
